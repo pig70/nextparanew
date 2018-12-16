@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container article">
+    <h1 class="article-title">{{ story.story_headline }}</h1>
+  <div class="article-first-para">{{ story.story_first_paragraph }}</div>
+      {% for paragraph in story_user_paragraphs %}
+          <div class="article-paragraph-text">{{ paragraph.user_paragraph|linebreaksbr }}</div>
+        {%  if paragraph.paragraph_author.author_image %}
+        <img src="{{ paragraph.paragraph_author.author_image.url }}" class="article-paragraph-author-image">{%  endif %}
+        <div class="article-paragraph-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>
+    {% endfor %}
+    <form method="POST" class="add paragraph form">{% csrf_token %}
+      {{ add_paragraph.as_p }}
+        <button type="submit" name="button">Submit</button></form>
+  </div>
+
+{% endblock %}

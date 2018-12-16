@@ -1,0 +1,137 @@
+@import "article.css";
+@import "registration.css";
+
+body {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: normal;
+    background-color: #f2f2f2;
+}
+
+a {
+    color: #000000;
+}
+
+a:hover {
+    color: #000000;
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.home-story-box {
+    height: 500px;
+    padding: 30px 25px 30px 25px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.27);
+}
+
+.author-image {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.author-name {
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    padding: 0;
+    vertical-align: top;
+}
+
+.author {
+    padding: 0;
+    margin-bottom: 17px;
+}
+
+.box-colon-text {
+    font-family: 'Roboto Slab', serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.home-story-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: #000000;
+}
+
+.home-story-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.btn.btn-primary.black-button {
+    font-family: 'Roboto Slab', serif;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 2px;
+    border: 0;
+    width: 60px;
+    height: 25px;
+    background-color: #000000;
+    padding: 0;
+    margin-top: 10px;
+}
+
+/* The css for the individual story */
+.story-box {
+    padding: 30px 25px 15px 25px;
+    border-radius: 8px;
+    border: solid 1px #4a3e33;
+    background-color: #f4f2ea;
+}
+
+.story-headline {
+    font-family: 'Roboto Slab', serif;
+    font-size: 25px;
+}
+
+.story-first-paragraph {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.story-body {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.login-logout {
+    margin-right: 5px;
+}
+
+.navbar {
+    background-color: #ffffff;
+    margin-bottom: 40px;
+    color: #000000;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.27);
+}
+
+.navbar a {
+    color: #000000;
+}
+
+.navbar-brand {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 500;
+}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block title %}Home | Nextparagraph{% endblock %} {% block content %}
+
+<h1>Latest paragraphs</h1>
+<div class="row">
+  {% for paragraph in new_paragraphs %}
+  <div class="col-sm-12 col-md-6 col-lg-4">
+    <div class="home-story-box d-flex flex-column">
+      <div class="author">
+        {% if paragraph.paragraph_author.author_image %}
+        <img src="{{ paragraph.paragraph_author.author_image.url }}" alt="" class="author-image">
+        {% endif %}
+        <div class="author-name">
+          {{ paragraph.paragraph_author.get_full_name }}
+        </div>
+      </div>
+      <div class="box-colon-text">
+        Added:
+      </div>
+      <div class="home-story-text">
+        {{ paragraph.user_paragraph|linebreaksbr|truncatewords:40 }}
+      </div>
+      <div class="mt-auto">
+        <div class="box-colon-text">
+          To:
+        </div>
+        <div class="home-story-title">
+          <a href="{% url 'story' slug=paragraph.story_belongs_to.slug pk=paragraph.story_belongs_to.pk %}">{{ paragraph.story_belongs_to }}</a>
+        </div>
+        <a href="{% url 'story' slug=paragraph.story_belongs_to.slug pk=paragraph.story_belongs_to.pk %}" class="btn btn-primary black-button">Read</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
