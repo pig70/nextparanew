@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import OriginalStory, UserStoryParagraphs
+from .models import OriginalStory, UserStoryParagraphs,AuthorImage
 
 # Register your models here.
 
@@ -17,3 +17,5 @@ class OriginalStoryAdmin(admin.ModelAdmin):
     search_fields = ('story_headline',)
     list_filter = ('story_publish_date',)
     prepopulated_fields = {'slug': ('story_headline',)}
+
+admin.site.register(AuthorImage)

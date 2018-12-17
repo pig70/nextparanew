@@ -6,8 +6,8 @@
   <div class="col-sm-12 col-md-6 col-lg-4">
     <div class="home-story-box d-flex flex-column">
       <div class="author">
-        {% if paragraph.paragraph_author.author_image %}
-        <img src="{{ paragraph.paragraph_author.author_image.url }}" alt="" class="author-image">
+        {% if paragraph.paragraph_author.author_image_name.author_image %}
+        <img src="{{ paragraph.paragraph_author.author_image_name.author_image.url }}" alt="" class="author-image">
         {% endif %}
         <div class="author-name">
           {{ paragraph.paragraph_author.get_full_name }}

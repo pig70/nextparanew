@@ -36,3 +36,9 @@ class UserStoryParagraphs(models.Model):
     @property
     def short_user_paragraph(self):
         return truncatewords(self.user_paragraph, 20)
+
+class AuthorImage(models.Model):
+    author_image = models.ImageField(upload_to='mainsite/static/images/')
+    author = models.OneToOneField(User, on_delete=models.CASCADE, related_name='author_image_name', blank=True, null=True)
+    def __str__(self):
+        return self.author.get_full_name()

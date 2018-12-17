@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from mainsite.models import OriginalStory, UserStoryParagraphs
-from .forms import AddParagraphForm
+from mainsite.models import OriginalStory, UserStoryParagraphs, AuthorImage
+from .forms import AddParagraphForm, UserRegistrationForm
 
 """
 Story detail view with paragraph form submission
 """
+
+
 def story(request, pk, slug):
     story = get_object_or_404(OriginalStory, pk=pk)
     story_user_paragraphs = story.paragraphs.all()
@@ -13,7 +15,7 @@ def story(request, pk, slug):
         if add_paragraph_form.is_valid():
             add_para = add_paragraph_form.save(commit=False)
             add_para.story_belongs_to = story
-            add_para.paragraph_author = request.user.author
+            add_para.paragraph_author = request.user
             add_para.save()
             return redirect('story', pk=story.pk, slug=story.slug)
     else:
@@ -22,12 +24,14 @@ def story(request, pk, slug):
     return render(request, 'story_detail.html', {'story': story, 'story_user_paragraphs':
         story_user_paragraphs, 'add_paragraph': add_paragraph})
 
+
 # Home view
 def home(request):
     home_list = OriginalStory.objects.all()
+    author_image = AuthorImage.objects.all()
     new_paragraphs = UserStoryParagraphs.objects.order_by(
         '-user_paragraph_date')
-    return render(request, 'home.html', {'home_list': home_list, 'new_paragraphs': new_paragraphs})
+    return render(request, 'home.html', {'home_list': home_list, 'new_paragraphs': new_paragraphs, 'author_image': author_image})
 
 
 # Registration form
