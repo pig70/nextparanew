@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from mainsite.models import OriginalStory, UserStoryParagraphs, AuthorImage
+from mainsite.models import OriginalStory, UserStoryParagraphs
 from .forms import AddParagraphForm, UserRegistrationForm
+from userprofile.models import AuthorProfile
 
 """
 Story detail view with paragraph form submission
@@ -28,7 +29,7 @@ def story(request, pk, slug):
 # Home view
 def home(request):
     home_list = OriginalStory.objects.all()
-    author_image = AuthorImage.objects.all()
+    author_image = AuthorProfile.objects.all()
     new_paragraphs = UserStoryParagraphs.objects.order_by(
         '-user_paragraph_date')
     return render(request, 'home.html', {'home_list': home_list, 'new_paragraphs': new_paragraphs, 'author_image': author_image})
