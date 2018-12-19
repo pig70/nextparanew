@@ -25,13 +25,13 @@
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Start a story</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Categories</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Trending</a>
         </li>
       </ul>
     {% if user.is_authenticated %}
@@ -41,8 +41,8 @@
       <div><a href="{% url 'logout' %}" class="login-logout">logout</a>
       </div>
       {% else %}
-      <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'register' %}">Register</a>
+      <a class="minor-nav" href="{% url 'login' %}">Login</a>
+        <a class="minor-nav" href="{% url 'register' %}">Register</a>
       {% endif %}
     </div>
 

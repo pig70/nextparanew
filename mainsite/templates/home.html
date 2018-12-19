@@ -12,12 +12,13 @@
         <div class="author-name">
           {{ paragraph.paragraph_author.get_full_name }}
         </div>
+      <div class="date-added">{{ paragraph.user_paragraph_date|date:'d M Y' }}</div>
       </div>
       <div class="box-colon-text">
         Added:
       </div>
       <div class="home-story-text">
-        {{ paragraph.user_paragraph|linebreaksbr|truncatewords:40 }}
+        {{ paragraph.user_paragraph|linebreaksbr|truncatewords:45 }}
       </div>
       <div class="mt-auto">
         <div class="box-colon-text">
