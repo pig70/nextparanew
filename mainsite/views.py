@@ -22,17 +22,17 @@ def story(request, pk, slug):
     else:
         add_paragraph = AddParagraphForm()
 
-    return render(request, 'story_detail.html', {'story': story, 'story_user_paragraphs':
-        story_user_paragraphs, 'add_paragraph': add_paragraph})
+    return render(request, 'story_detail.html',
+                  {'story': story, 'story_user_paragraphs': story_user_paragraphs, 'add_paragraph': add_paragraph})
 
 
 # Home view
 def home(request):
     home_list = OriginalStory.objects.all()
     author_image = AuthorProfile.objects.all()
-    new_paragraphs = UserStoryParagraphs.objects.order_by(
-        '-user_paragraph_date')
-    return render(request, 'home.html', {'home_list': home_list, 'new_paragraphs': new_paragraphs, 'author_image': author_image})
+    new_paragraphs = UserStoryParagraphs.objects.order_by('-user_paragraph_date')
+    return render(request, 'home.html',
+                  {'home_list': home_list, 'new_paragraphs': new_paragraphs, 'author_image': author_image})
 
 
 # Registration form
@@ -42,8 +42,7 @@ def register(request):
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
             new_user = user_form.save(commit=False)
-            new_user.set_password(
-                user_form.cleaned_data['password'])
+            new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
             return render(request, 'registration-complete.html', {'new_user': new_user})
     else:
