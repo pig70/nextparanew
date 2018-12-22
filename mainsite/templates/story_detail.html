@@ -8,19 +8,24 @@
                 <h1 class="article-title col.sm-12">{{ story.story_headline }}</h1>
             </div>
             <div class="row no-gutters">
-<div class="below-headline-info col-sm-6 col-md-9 col-lg-9">
-    <div class="article-date-info">{{ story.story_publish_date|date:'d M Y' }}</div>
-    <div class="article-watchers"><i class="fa fa-eye fa-lg" id="watchers-eye-not-watched"></i><span class="watcher-number">1532</span></div>
-            <div class="article-tags">Adventure | Science Fiction | Children's</div>
+                <div class="below-headline-info col-sm-6 col-md-9 col-lg-9">
+                    <div class="article-date-info">{{ story.story_publish_date|date:'d M Y' }}</div>
+                    <div class="article-watchers"><i class="fa fa-eye fa-lg" id="watchers-eye-not-watched"></i><span
+                            class="watcher-number">1532</span></div>
+                    <div class="article-tags">Adventure | Science Fiction | Children's</div>
 
-</div>
-{# The original story paragraph and author info#}
-                <div class="article-first-para col-sm-6 col-md-9 col-lg-9">{{ story.story_first_paragraph }}</div>
-            {% if story.story_paragraph_author.author_image_name.author_image %}
-                        <img src="{{ story.story_paragraph_author.author_image_name.author_image.url }}"
-                             class="article-paragraph-author-image col-sm-12 col-md-auto col-lg-auto">{% endif %}
-            <div class="article-paragraph-author-name col-sm-12 col-md-auto col-lg-auto">{{ story.story_paragraph_author.get_full_name }}
-            </div>
+                </div>
+
+                {# The original story paragraph and author info#}
+                <div class="article-sub-head col-sm-6 col-md-9 col-lg-9">First paragraph</div>
+                <div class="article-first-para col-sm-6 col-md-9 col-lg-9">
+                    {{ story.story_first_paragraph }}</div>
+                {% if story.story_paragraph_author.author_image_name.author_image %}
+                    <img src="{{ story.story_paragraph_author.author_image_name.author_image.url }}"
+                         class="article-paragraph-author-image col-sm-12 col-md-auto col-lg-auto">{% endif %}
+                <div class="article-paragraph-author-name col-sm-12 col-md-auto col-lg-auto">{{ story.story_paragraph_author.get_full_name }}
+                </div>
+                <div class="article-sub-head col-sm-6 col-md-9 col-lg-9">Next paragraphs</div>
                 {% for paragraph in story_user_paragraphs %}
                     <div class="article-paragraph-text col-sm-6 col-md-9 col-lg-9">{{ paragraph.user_paragraph|linebreaksbr }}</div>
 
@@ -39,7 +44,11 @@
                             <button class="btn btn-primary black-button" type="submit" name="button">Add</button>
                         </form>
                     {% else %}
-                        <div>You must be logged in to add a paragraph</div>
+                        <div class="log-in-to-add-prompt-bold">
+                            <p>You must be logged in to add a paragraph</p>
+                            <a class="btn btn-primary black-button" href="{% url 'login' %}">Login</a><a
+                                class="btn btn-primary black-button" href="{% url 'register' %}">Register Now</a>
+                        </div>
                     {% endif %}
                 </div>
             </div>
