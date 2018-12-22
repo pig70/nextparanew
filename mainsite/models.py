@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.template.defaultfilters import truncatewords
 from django.contrib.auth.models import User
+from userprofile.models import AuthorProfile
 
 #Model for the original story
 class OriginalStory(models.Model):
@@ -11,6 +12,7 @@ class OriginalStory(models.Model):
     story_paragraph_author = models.ForeignKey(
         User, on_delete=models.CASCADE, blank=True, null=True)
     slug = models.SlugField(max_length=250, null=True)
+    original_story_author_image = models.OneToOneField(AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="original_author_image")
 
     def __str__(self):
         return self.story_headline

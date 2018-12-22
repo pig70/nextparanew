@@ -2,28 +2,48 @@
 
 {% block content %}
 
-<div class="container article">
-    <h1 class="article-title">{{ story.story_headline }}</h1>
-  <div class="article-first-para">{{ story.story_first_paragraph }}</div>
-      {% for paragraph in story_user_paragraphs %}
-          <div class="article-paragraph-text">{{ paragraph.user_paragraph|linebreaksbr }}</div>
+    <div class="article-box">
+        <div class="content-container">
+            <div class="row no-gutters">
+                <h1 class="article-title col.sm-12">{{ story.story_headline }}</h1>
+            </div>
+            <div class="row no-gutters">
+<div class="below-headline-info col-sm-6 col-md-9 col-lg-9">
+    <div class="article-date-info">{{ story.story_publish_date|date:'d M Y' }}</div>
+    <div class="article-watchers"><i class="fa fa-eye fa-lg" id="watchers-eye-not-watched"></i><span class="watcher-number">1532</span></div>
+            <div class="article-tags">Adventure | Science Fiction | Children's</div>
 
-        {%  if paragraph.paragraph_author.author_image_name.author_image %}
-        <img src="{{ paragraph.paragraph_author.author_image_name.author_image.url }}" class="article-paragraph-author-image">{%  endif %}
-        <div class="article-paragraph-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>
-    {% endfor %}
-
-{# Adding a paragraph code #}
-<div class="add-paragraph-container">
-{% if request.user.is_authenticated %}
-    <form method="POST">{% csrf_token %}
-        <label class="form-label" for="id_user_paragraph">Add a paragraph</label>
-      {{ add_paragraph.user_paragraph }}
-        <button class="btn btn-primary black-button" type="submit" name="button">Add</button></form>
-{% else %}
-<div>You must be logged in to add a paragraph</div>
-{% endif %}
 </div>
-  </div>
+{# The original story paragraph and author info#}
+                <div class="article-first-para col-sm-6 col-md-9 col-lg-9">{{ story.story_first_paragraph }}</div>
+            {% if story.story_paragraph_author.author_image_name.author_image %}
+                        <img src="{{ story.story_paragraph_author.author_image_name.author_image.url }}"
+                             class="article-paragraph-author-image col-sm-12 col-md-auto col-lg-auto">{% endif %}
+            <div class="article-paragraph-author-name col-sm-12 col-md-auto col-lg-auto">{{ story.story_paragraph_author.get_full_name }}
+            </div>
+                {% for paragraph in story_user_paragraphs %}
+                    <div class="article-paragraph-text col-sm-6 col-md-9 col-lg-9">{{ paragraph.user_paragraph|linebreaksbr }}</div>
+
+                    {% if paragraph.paragraph_author.author_image_name.author_image %}
+                        <img src="{{ paragraph.paragraph_author.author_image_name.author_image.url }}"
+                             class="article-paragraph-author-image col-sm-12 col-md-auto col-lg-auto">{% endif %}
+                    <div class="article-paragraph-author-name col-sm-12 col-md-auto col-lg-auto">{{ paragraph.paragraph_author.get_full_name }}</div>
+                {% endfor %}
+
+                {# Adding a paragraph code #}
+                <div class="add-paragraph-container col-sm-12 col-md-9 col-lg-9">
+                    {% if request.user.is_authenticated %}
+                        <form method="POST">{% csrf_token %}
+                            <label class="form-label" for="id_user_paragraph">Add a paragraph</label>
+                            {{ add_paragraph.user_paragraph }}
+                            <button class="btn btn-primary black-button" type="submit" name="button">Add</button>
+                        </form>
+                    {% else %}
+                        <div>You must be logged in to add a paragraph</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

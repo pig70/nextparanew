@@ -17,19 +17,24 @@ a:hover {
 }
 
 h1 {
-    font-family: 'Roboto Slab', serif;
-    font-size: 25px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 25px;
 }
 
+.row {
+    padding: 0;
+    margin: 0;
+}
+
 .home-story-box {
-    height: 500px;
+    height: 550px;
     padding: 30px 25px 30px 25px;
     margin-bottom: 15px;
     border-radius: 4px;
     background-color: #ffffff;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.27);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
 .author-image {
@@ -44,7 +49,7 @@ h1 {
 
 .author-name {
     display: inline-block;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 18px;
     font-weight: bold;
     color: #000000;
@@ -58,7 +63,7 @@ h1 {
 }
 
 .box-colon-text {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #000000;
@@ -66,8 +71,8 @@ h1 {
 }
 
 .home-story-title {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 300;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
     font-size: 20px;
     color: #000000;
 }
@@ -80,9 +85,15 @@ h1 {
     margin-bottom: 20px;
 }
 
-.btn.btn-primary.black-button {
-    font-family: 'Roboto Slab', serif;
+.date-added {
+    font-family: 'Oswald', sans-serif;
     font-size: 14px;
+    font-weight: 200;
+}
+
+.btn.btn-primary.black-button {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
     color: #ffffff;
     border-radius: 2px;
     border: 0;
@@ -91,40 +102,18 @@ h1 {
     margin-top: 10px;
 }
 
-/* The css for the individual story */
-.story-box {
-    padding: 30px 25px 15px 25px;
-    border-radius: 8px;
-    border: solid 1px #4a3e33;
-    background-color: #f4f2ea;
-}
-
-.story-headline {
-    font-family: 'Roboto Slab', serif;
-    font-size: 25px;
-}
-
-.story-first-paragraph {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.story-body {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: normal;
-}
-
 .login-logout {
-    margin-right: 5px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 20px;
 }
 
 .minor-nav {
-    font-family: 'Roboto Slab', cursive;
-    font-size: 14px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
     padding-right: 10px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .navbar {
@@ -132,6 +121,7 @@ h1 {
     margin-bottom: 40px;
     color: #000000;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.27);
+    height: 95px;
 }
 
 .navbar a {
@@ -139,13 +129,15 @@ h1 {
 }
 
 .navbar-brand {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 500;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    margin-right: 35px;
 }
 
 .nav-item {
-    font-family: 'Roboto Slab', cursive;
-    font-size: 14px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
     padding-right: 10px;
-    font-weight: bold;
+    font-weight: 500;
 }

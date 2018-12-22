@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block title %}Home | Nextparagraph{% endblock %} {% block content %}
 
 <h1>Latest paragraphs</h1>
-<div class="row">
+<div class="row no-gutters">
   {% for paragraph in new_paragraphs %}
   <div class="col-sm-12 col-md-6 col-lg-4">
     <div class="home-story-box d-flex flex-column">
@@ -18,7 +18,7 @@
         Added:
       </div>
       <div class="home-story-text">
-        {{ paragraph.user_paragraph|linebreaksbr|truncatewords:45 }}
+        {{ paragraph.user_paragraph|linebreaksbr|truncatewords:50 }}
       </div>
       <div class="mt-auto">
         <div class="box-colon-text">
