@@ -6,8 +6,7 @@
 }
 
 .content-container {
-    max-width: 960px;
-    margin: auto;
+    margin: 0 70px 0 70px;
 }
 
 .article-title {
@@ -24,19 +23,13 @@
     font-size: 18px;
     font-weight: 200;
     color: #000000;
-    display: inline;
-}
-
-.below-headline-info {
-    margin: 0 0 25px 0;
+    padding: 0px !important;
 }
 
 .article-watchers {
     font-family: 'Oswald', sans-serif;
     font-size: 18px;
     font-weight: 200;
-    display: inline;
-    float: right;
 }
 
 .watcher-number {
@@ -48,6 +41,7 @@
     font-size: 16px;
     font-weight: 200;
     line-height: 1.5;
+    margin: 0 0 25px 0;
 }
 
 .article-sub-head {
@@ -63,7 +57,7 @@
     font-weight: 400;
     line-height: 1.5;
     color: #000000;
-    margin: 0 40px 22px 0;
+    margin: 0 20px 22px 0;
 }
 
 .article-paragraph-text {
@@ -72,14 +66,14 @@
     font-weight: 400;
     color: #000000;
     line-height: 1.5;
-    margin: 0 40px 35px 0;
+    margin: 0 20px 35px 0;
 }
 
 .article-paragraph-author-image {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    margin-right: 3px;
+    margin: 0 3px 10px 0;
     vertical-align: middle;
     display: inline;
 }
@@ -90,7 +84,15 @@
     font-size: 14px;
     color: #000000;
     display: inline;
-    margin-bottom: 5px;
+}
+
+.article-like-word {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 14px;
+    color: #000000;
+    display: inline;
+    margin-left: 5px;
 }
 
 .user-paragraph-field {
@@ -120,4 +122,30 @@ textarea:focus {
     font-family: 'Oswald', serif;
     font-size: 20px;
     font-weight: 900;
+}
+
+@media only screen and (max-width: 1000px) {
+    .article-first-para {
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+    .article-paragraph-text {
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .article-title {
+    font-size: 35px;
+}
+    .article-box {
+        padding: 30px 0;
+    }
+    .content-container {
+        margin: 0 30px;
+    }
+    .navbar.navbar-expand-lg {
+        margin-bottom: 20px;
+    }
 }

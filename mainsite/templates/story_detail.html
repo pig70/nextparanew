@@ -1,42 +1,56 @@
 {% extends 'base.html' %}
-
+{% block title %}{{ story.story_headline }} | Nextparagraph{% endblock %}
 {% block content %}
 
     <div class="article-box">
         <div class="content-container">
             <div class="row no-gutters">
-                <h1 class="article-title col.sm-12">{{ story.story_headline }}</h1>
+
+                {#  Original story block #}
+                <h1 class="article-title col-12">{{ story.story_headline }}</h1>
             </div>
             <div class="row no-gutters">
-                <div class="below-headline-info col-sm-6 col-md-9 col-lg-9">
-                    <div class="article-date-info">{{ story.story_publish_date|date:'d M Y' }}</div>
-                    <div class="article-watchers"><i class="fa fa-eye fa-lg" id="watchers-eye-not-watched"></i><span
-                            class="watcher-number">1532</span></div>
-                    <div class="article-tags">Adventure | Science Fiction | Children's</div>
-
+                <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 d-flex">
+                    <div class="article-date-info p-2">{{ story.story_publish_date|date:'d M Y' }}</div>
+                    <div class="article-watchers ml-auto"><i class="far fa-eye fa-lg"
+                                                             id="article-watchers-eye-not-watched"></i><span
+                            class="watcher-number" id="article-watcher-number">1532</span></div>
                 </div>
+                <div class="article-tags col-sm-12 col-md-12 col-lg-9">Adventure | Science Fiction | Children's</div>
 
-                {# The original story paragraph and author info#}
-                <div class="article-sub-head col-sm-6 col-md-9 col-lg-9">First paragraph</div>
-                <div class="article-first-para col-sm-6 col-md-9 col-lg-9">
+                {# The original story paragraph and author info #}
+                <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">First paragraph</div>
+                <div class="article-first-para col-sm-12 col-md-12 col-lg-9">
                     {{ story.story_first_paragraph }}</div>
+
+                {#  First paragraph author image and name  #}
                 {% if story.story_paragraph_author.author_image_name.author_image %}
                     <img src="{{ story.story_paragraph_author.author_image_name.author_image.url }}"
-                         class="article-paragraph-author-image col-sm-12 col-md-auto col-lg-auto">{% endif %}
-                <div class="article-paragraph-author-name col-sm-12 col-md-auto col-lg-auto">{{ story.story_paragraph_author.get_full_name }}
+                         class="article-paragraph-author-image"
+                         alt="{{ story.story_paragraph_author.get_full_name }} on Nextparagraph">{% endif %}
+                <div class="article-paragraph-author-name col-auto">{{ story.story_paragraph_author.get_full_name }}
                 </div>
-                <div class="article-sub-head col-sm-6 col-md-9 col-lg-9">Next paragraphs</div>
-                {% for paragraph in story_user_paragraphs %}
-                    <div class="article-paragraph-text col-sm-6 col-md-9 col-lg-9">{{ paragraph.user_paragraph|linebreaksbr }}</div>
 
-                    {% if paragraph.paragraph_author.author_image_name.author_image %}
-                        <img src="{{ paragraph.paragraph_author.author_image_name.author_image.url }}"
-                             class="article-paragraph-author-image col-sm-12 col-md-auto col-lg-auto">{% endif %}
-                    <div class="article-paragraph-author-name col-sm-12 col-md-auto col-lg-auto">{{ paragraph.paragraph_author.get_full_name }}</div>
+                {# Next paragraphs #}
+                <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">Next paragraphs</div>
+                {% for paragraph in story_user_paragraphs %}
+                    <div class="article-paragraph-text col-sm-12 col-md-12 col-lg-9">{{ paragraph.user_paragraph|linebreaksbr }}</div>
+
+                    {# Nextparagraphs author image and name #}
+                    <div class="col-auto">
+                        {% if paragraph.paragraph_author.author_image_name.author_image %}
+                            <img src="{{ paragraph.paragraph_author.author_image_name.author_image.url }}"
+                                 class="article-paragraph-author-image"
+                                 alt="{{ paragraph.paragraph_author.get_full_name }} on Nextparagraph">{% endif %}
+                        <div class="article-paragraph-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>
+                        <div class="nextparagraph-like"><i class="far fa-heart fa-lg"
+                                                           id="article-like-heart"></i><span
+                                class="article-like-word mr-auto">Like</span></div>
+                    </div>
                 {% endfor %}
 
                 {# Adding a paragraph code #}
-                <div class="add-paragraph-container col-sm-12 col-md-9 col-lg-9">
+                <div class="add-paragraph-container col-sm-12 col-md-12 col-lg-9">
                     {% if request.user.is_authenticated %}
                         <form method="POST">{% csrf_token %}
                             <label class="form-label" for="id_user_paragraph">Add a paragraph</label>
