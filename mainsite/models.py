@@ -6,7 +6,7 @@ from userprofile.models import AuthorProfile
 
 #Model for the original story
 class OriginalStory(models.Model):
-    story_headline = models.CharField(max_length=500, blank=True)
+    story_headline = models.CharField(max_length=70, blank=True)
     story_publish_date = models.DateTimeField(auto_now_add=True)
     story_first_paragraph = models.TextField(max_length=600, blank=True)
     story_paragraph_author = models.ForeignKey(

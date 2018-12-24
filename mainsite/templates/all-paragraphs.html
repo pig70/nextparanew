@@ -1,8 +1,10 @@
-{% extends 'base.html' %} {% block title %}Home | Nextparagraph{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% block title %}All paragraphs | Nextparagraph{% endblock %}
+{% block content %}
 
-<h1>Latest paragraphs</h1>
+    <h1>All paragraphs</h1>
 <div class="row">
-  {% for paragraph in new_paragraphs %}
+  {% for paragraph in new_paragraphs_all %}
   <div class="col-sm-12 col-md-6 col-xl-4">
     <div class="home-story-box d-flex flex-column">
       <div class="author">
@@ -33,6 +35,5 @@
   </div>
   {% endfor %}
 </div>
-    <div class="see-more-link text-center"><a href="{% url 'all_paragraphs' %}">See all paragraphs</a></div>
 
 {% endblock %}

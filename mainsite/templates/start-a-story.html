@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ story.story_headline }} All paragraphs | Nextparagraph{% endblock %}
+{% block content %}
+<h1>Start a story</h1>
+
+{# Start a story form to go in here   #}
+    {{ start_a_story_form.as_p }}
+
+{% endblock %}

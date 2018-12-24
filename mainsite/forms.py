@@ -1,14 +1,23 @@
 from django import forms
-from .models import UserStoryParagraphs
+from .models import UserStoryParagraphs,OriginalStory
 from django.contrib.auth.models import User
 
-
+# Add a paragraph form on a story
 class AddParagraphForm(forms.ModelForm):
     user_paragraph = forms.CharField(max_length=800, widget=forms.Textarea(attrs={'class': 'user-paragraph-field'}))
 
     class Meta:
         model = UserStoryParagraphs
         fields = ('user_paragraph',)
+
+# Start a story form
+class StartStory(forms.ModelForm):
+    story_title = forms.CharField(max_length=70, widget=forms.TextInput(attrs={'class': 'form-field'}))
+    first_paragraph = forms.CharField(max_length=600, widget=forms.Textarea(attrs={'class': 'form-field-textarea'}))
+
+    class Meta:
+        model = OriginalStory
+        fields = ('story_headline','story_first_paragraph','story_paragraph_author','slug')
 
 
 # Registration form
