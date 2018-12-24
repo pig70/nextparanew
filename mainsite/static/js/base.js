@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-$('#article-like-heart').click(function() {
+$('body #article-like-heart').click(function() {
             $(this)
                 .toggleClass('far fa-heart fa-lg')
                 .toggleClass('fas fa-heart fa-lg');

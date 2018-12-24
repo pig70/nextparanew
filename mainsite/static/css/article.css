@@ -15,7 +15,7 @@
     font-weight: 900;
     line-height: 1.09;
     color: #000000;
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 .article-date-info {
@@ -23,7 +23,7 @@
     font-size: 18px;
     font-weight: 200;
     color: #000000;
-    padding: 0px !important;
+    padding: 0 !important;
 }
 
 .article-watchers {
@@ -66,7 +66,7 @@
     font-weight: 400;
     color: #000000;
     line-height: 1.5;
-    margin: 0 20px 35px 0;
+    margin: 0 20px 50px 0;
 }
 
 .article-paragraph-author-image {
@@ -95,6 +95,11 @@
     margin-left: 5px;
 }
 
+.nextparagraph-like {
+    margin-bottom: 20px;
+}
+
+/* add a paragraph style */
 .user-paragraph-field {
     width: 100%;
     height: 200px;
@@ -126,11 +131,11 @@ textarea:focus {
 
 @media only screen and (max-width: 1000px) {
     .article-first-para {
-        margin-right: 0px;
+        margin-right: 0;
         margin-bottom: 10px;
     }
     .article-paragraph-text {
-        margin-right: 0px;
+        margin-right: 0;
         margin-bottom: 10px;
     }
 }
