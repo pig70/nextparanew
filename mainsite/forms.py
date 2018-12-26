@@ -11,13 +11,13 @@ class AddParagraphForm(forms.ModelForm):
         fields = ('user_paragraph',)
 
 # Start a story form
-class StartStory(forms.ModelForm):
-    story_title = forms.CharField(max_length=70, widget=forms.TextInput(attrs={'class': 'form-field'}))
-    first_paragraph = forms.CharField(max_length=600, widget=forms.Textarea(attrs={'class': 'form-field-textarea'}))
+class StartStoryForm(forms.ModelForm):
+    story_headline = forms.CharField(max_length=70, widget=forms.TextInput(attrs={'class': 'form-field'}))
+    story_first_paragraph = forms.CharField(max_length=600, widget=forms.Textarea(attrs={'class': 'form-field-textarea'}))
 
     class Meta:
         model = OriginalStory
-        fields = ('story_headline','story_first_paragraph','story_paragraph_author','slug')
+        exclude = ('story_publish_date', 'slug', 'original_story_author_image','story_paragraph_author')
 
 
 # Registration form

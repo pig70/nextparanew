@@ -5,6 +5,20 @@
 <h1>Start a story</h1>
 
 {# Start a story form to go in here   #}
-    {{ start_a_story_form.as_p }}
-
+    <div class="registration-container">
+    <h1>Start a story</h1>
+        <div class="registration-box">
+<form action="." method="post">
+{#                {{ start_story_form.story_headline.errors }}#}
+{#                <label class="form-label" for="id_story_title">Story title</label>#}
+{#                {{ start_story_form.story_headline }}#}
+{#{{ start_story_form.story_first_paragraph.errors }}#}
+{#                <label class="form-label" for="id_story_first_paragraph">First paragraph</label>#}
+{#                {{ start_story_form.story_first_paragraph }}#}
+    {{ start_story_form.as_p }}
+{% csrf_token %}
+            <p><input class="btn btn-primary black-button" type="submit" value="Start a story"></p>
+</form>
+    </div>
+    </div>
 {% endblock %}

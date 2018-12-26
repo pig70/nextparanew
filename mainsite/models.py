@@ -12,7 +12,7 @@ class OriginalStory(models.Model):
     story_paragraph_author = models.ForeignKey(
         User, on_delete=models.CASCADE, blank=True, null=True)
     slug = models.SlugField(max_length=250, null=True)
-    original_story_author_image = models.OneToOneField(AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="original_author_image")
+    original_story_author_image = models.ForeignKey(AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="original_author_image")
 
     def __str__(self):
         return self.story_headline
