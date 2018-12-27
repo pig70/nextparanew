@@ -17,7 +17,7 @@ class StartStoryForm(forms.ModelForm):
 
     class Meta:
         model = OriginalStory
-        exclude = ('story_publish_date', 'slug', 'original_story_author_image','story_paragraph_author')
+        exclude = ('story_publish_date', 'slug', 'original_story_author', 'story_paragraph_author')
 
 
 # Registration form

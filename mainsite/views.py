@@ -35,6 +35,7 @@ def start_a_story(request):
             new_story = start_story_form.save(commit=False)
             new_story.slug = slugify(new_story.story_headline)
             new_story.story_paragraph_author = request.user
+            new_story.original_story_author = request.user.author_profile_image
             new_story.save()
             return redirect('home')
     else:
@@ -46,10 +47,10 @@ def start_a_story(request):
 # Home view
 def home(request):
     home_list = OriginalStory.objects.all()
-    author_image = AuthorProfile.objects.all()
     new_paragraphs = UserStoryParagraphs.objects.order_by('-user_paragraph_date')[:6]
+    home_stories = OriginalStory.objects.order_by('-story_publish_date')
     return render(request, 'home.html',
-                  {'home_list': home_list, 'new_paragraphs': new_paragraphs, 'author_image': author_image})
+                  {'home_list': home_list, 'new_paragraphs': new_paragraphs, 'home_stories': home_stories})
 
 
 # Registration form

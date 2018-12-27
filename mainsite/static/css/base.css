@@ -35,7 +35,7 @@ h2 {
     margin: 0;
 }
 
-.home-story-box {
+.home-paragraph-box {
     height: 550px;
     width: 100%;
     padding: 30px 25px 30px 25px;
@@ -46,9 +46,9 @@ h2 {
 }
 
 .author-image {
-    display: inline-block;
     width: 60px;
     height: 60px;
+    border: 0;
     border-radius: 50%;
     margin-right: 15px;
     float: left;
@@ -56,7 +56,6 @@ h2 {
 }
 
 .author-name {
-    display: inline-block;
     font-family: 'Oswald', sans-serif;
     font-size: 18px;
     font-weight: bold;
@@ -78,14 +77,14 @@ h2 {
     margin-bottom: 5px;
 }
 
-.home-story-title {
+.home-paragraph-title {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
     font-size: 20px;
     color: #000000;
 }
 
-.home-story-text {
+.home-paragraph-text {
     font-family: 'Playfair Display', serif;
     font-size: 15px;
     font-weight: normal;
@@ -93,9 +92,9 @@ h2 {
     margin-bottom: 20px;
 }
 
-.date-added {
+.home-paragraph-date-added {
     font-family: 'Oswald', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 200;
 }
 
@@ -110,6 +109,7 @@ h2 {
     margin: 10px 10px 0 0;
 }
 
+/* nav bar styles */
 .login-logout {
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
@@ -156,8 +156,65 @@ h2 {
     font-weight: 900;
 }
 
+/* Story listing styles */
+
+.home-story-box {
+    height: 265px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+    padding: 15px 15px;
+    margin-bottom: 15px;
+}
+
+.home-story-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 900;
+    color: #000000;
+}
+
+.home-story-author {
+    padding: 0;
+    margin-bottom: 17px;
+}
+
+.home-story-author-image {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    vertical-align: middle;
+    float: left;
+    margin-right: 5px;
+}
+
+.home-story-author-name {
+    vertical-align: top;
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #000000;
+}
+
+.home-story-date-added {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.home-story-stats {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #000000;
+}
+
+
+/* Media queries */
 @media only screen and (max-width: 500px) {
-    .container{
+    .container {
         margin: 0;
         padding: 0;
     }
