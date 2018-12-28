@@ -30,9 +30,25 @@ h2 {
     font-weight: 900;
 }
 
+h5 {
+    font-family: 'Oswald', serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.footer-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+}
+
 .row {
     padding: 0;
     margin: 0;
+}
+
+.page-footer {
+    margin-top: 40px;
 }
 
 .home-paragraph-box {

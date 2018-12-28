@@ -54,3 +54,9 @@ input[type=password] {
     color: #00000;
 }
 
+.reg-pages-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    padding-left: 15px;
+    text-align: center;
+}

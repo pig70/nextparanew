@@ -13,7 +13,7 @@ class AddParagraphForm(forms.ModelForm):
 # Start a story form
 class StartStoryForm(forms.ModelForm):
     story_headline = forms.CharField(max_length=70, widget=forms.TextInput(attrs={'class': 'form-field'}))
-    story_first_paragraph = forms.CharField(max_length=600, widget=forms.Textarea(attrs={'class': 'form-field-textarea'}))
+    story_first_paragraph = forms.CharField(max_length=600, widget=forms.Textarea(attrs={'class': 'form-field'}))
 
     class Meta:
         model = OriginalStory

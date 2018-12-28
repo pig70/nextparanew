@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+    {% if user.is_authenticated %}
+        <div>You've already registered and logged in.</br>
+            <strong><a href="{% url 'start_story' %}">Start some stories!</strong></a></div>
+        </div>
+    {% else %}
     <div class="registration-container">
         <div class="registration-box">
             {% if form.errors %}
@@ -29,4 +34,5 @@
             <p><a href="{% url 'password_reset' %}">Forgotten your password?</a></p>
         </div>
     </div>
+    {% endif %}
 {% endblock %}

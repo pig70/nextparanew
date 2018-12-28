@@ -28,7 +28,6 @@ def story(request, pk, slug):
 
 # Start a story form view
 def start_a_story(request):
-    author_profile = AuthorProfile.objects.all()
     if request.method == 'POST':
         start_story_form = StartStoryForm(request.POST)
         if start_story_form.is_valid():

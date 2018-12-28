@@ -2,5 +2,17 @@
 {% block title %}Registration Complete{% endblock %}
 
 {% block content %}
-<h1>Registration complete</h1>
+    <div class="container">
+        {% if user.is_authenticated %}
+            <div>You've already registered and logged in.</br>
+                <strong><a href="{% url 'start_story' %}">Start some stories!</strong></a></div>
+            </div>
+        {% else %}
+            <h1>Registration complete</h1>
+            <div class="reg-pages-text">
+                <p>Thanks for registering</p>
+                <p>Please <a href="{% url 'login' %}"><strong>log in</strong></a> to start as story or write some next paragraphs</p>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
