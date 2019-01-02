@@ -57,6 +57,12 @@
         </div>
     {% endfor %}
 
+    {% for stories in home_stories %}
+    {% if stories.paragraphs.count == 0 %}
+    {{ stories.story_headline}}
+    {% endif %}
+    {% endfor %}
+
 
 </div>
 {% endblock %}
