@@ -1,7 +1,8 @@
-from django.db import models
-from django.utils import timezone
-from django.template.defaultfilters import truncatewords
 from django.contrib.auth.models import User
+from django.db import models
+from django.template.defaultfilters import truncatewords
+from django.utils import timezone
+
 from userprofile.models import AuthorProfile
 
 #Model for the original story

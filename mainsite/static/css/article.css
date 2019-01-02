@@ -114,11 +114,6 @@
     vertical-align: top;
 }
 
-textarea:focus {
-    outline: 0;
-    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
-}
-
 .add-paragraph-container {
     margin-top: 10px;
 }

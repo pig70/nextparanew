@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block title %}Home | Nextparagraph{% endblock %} {% block content %}
 
+    {# Latest paragraphs in detail  #}
     <h1>Latest paragraphs</h1>
     <div class="row">
         {% for paragraph in new_paragraphs %}
@@ -7,7 +8,7 @@
                 <div class="home-paragraph-box d-flex flex-column">
                     <div class="author">
                         {% if paragraph.paragraph_author.author_profile_image.author_image %}
-                            <img src="{{ paragraph.paragraph_author.author_profile_image.author_image.url }}" alt=""
+                            <img src="{{ paragraph.paragraph_author.author_profile_image.author_image.url }}" alt="{{ paragraph.paragraph_author.get_full_name }} | NextParagraph"
                                  class="author-image">
                         {% endif %}
                         <div class="author-name">
@@ -36,33 +37,58 @@
         {% endfor %}
     </div>
     <div class="see-more-link text-center"><a href="{% url 'all_paragraphs' %}">See all paragraphs</a></div>
-    <h1>Stories</h1>
+
+    {#  All of the stories by date added  #}
+    <h1>All stories</h1>
     <div class="row">
-    {% for stories in home_stories %}
-        <div class="col-sm-12 col-md-4 col-lg-3">
-        <div class="home-story-box d-flex flex-column">
-            <div class="home-story-title">{{ stories.story_headline }}</div>
-            <div class="mt-auto">
-                <div class="home-story-author">
-                    <div class="box-colon-text">Started by:</div>
-                    <img class="home-story-author-image" src="{{ stories.original_story_author.author_image.url }}">
-                    <div class="home-story-author-name">{{ stories.original_story_author }}</div>
-                    <div class="home-story-date-added">{{ stories.story_publish_date|date:'d M Y' }}</div>
-                </div>
-                <div class="home-story-stats">20 paragraphs | 15 authors | 50 Likes</div>
-                 <a href="{% url 'story' slug=stories.slug pk=stories.pk %}"
+        {% for stories in home_stories %}
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="home-story-box d-flex flex-column">
+                    <div class="home-story-title"><a
+                            href="{% url 'story' slug=stories.slug pk=stories.pk %}">{{ stories.story_headline }}</a>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="home-story-author">
+                            <div class="box-colon-text">Started by:</div>
+                            <img class="home-story-author-image"
+                                 src="{{ stories.original_story_author.author_image.url }}" alt="{{ stories.original_story_author.author.get_full_name }} | NextParagraph">
+                            <div class="home-story-author-name">{{ stories.original_story_author }}</div>
+                            <div class="home-story-date-added">{{ stories.story_publish_date|date:'d M Y' }}</div>
+                        </div>
+                        <div class="home-story-stats">20 paragraphs | 15 authors | 50 Likes</div>
+                        <a href="{% url 'story' slug=stories.slug pk=stories.pk %}"
                            class="btn btn-primary black-button">Read</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+    <h1>Stories without paragraphs</h1>
+    <div class="row">
 
-    {% for stories in home_stories %}
-    {% if stories.paragraphs.count == 0 %}
-    {{ stories.story_headline}}
-    {% endif %}
-    {% endfor %}
-
-
-</div>
+        {#  Stories without any paragraphs  #}
+        {% for stories in home_stories %}
+            {% if stories.paragraphs.count == 0 %}
+                <div class="col-sm-12 col-md-4 col-lg-3">
+                    <div class="home-story-box d-flex flex-column">
+                        <div class="home-story-title"><a
+                                href="{% url 'story' slug=stories.slug pk=stories.pk %}">{{ stories.story_headline }}</a>
+                        </div>
+                        <div class="mt-auto">
+                            <div class="home-story-author">
+                                <div class="box-colon-text">Started by:</div>
+                                <img class="home-story-author-image"
+                                     src="{{ stories.original_story_author.author_image.url }}" alt="{{ stories.original_story_author.author.get_full_name }} | NextParagraph">
+                                <div class="home-story-author-name">{{ stories.original_story_author }}</div>
+                                <div class="home-story-date-added">{{ stories.story_publish_date|date:'d M Y' }}</div>
+                            </div>
+                            <div class="home-story-stats">20 paragraphs | 15 authors | 50 Likes</div>
+                            <a href="{% url 'story' slug=stories.slug pk=stories.pk %}"
+                               class="btn btn-primary black-button">Read</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}
