@@ -1,6 +1,8 @@
 from django import forms
 from .models import UserStoryParagraphs,OriginalStory
+from userprofile.models import AuthorProfile
 from django.contrib.auth.models import User
+
 
 # Add a paragraph form on a story
 class AddParagraphForm(forms.ModelForm):
@@ -30,10 +32,11 @@ class UserRegistrationForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-field'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-field'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-field'}))
+    author_image_field = forms.FileField()
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = ('username', 'first_name', 'last_name', 'email', 'author_image_field')
 
     def clean_confirm_password(self):
         cd = self.cleaned_data

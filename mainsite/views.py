@@ -3,12 +3,11 @@ from mainsite.models import OriginalStory, UserStoryParagraphs
 from .forms import AddParagraphForm, UserRegistrationForm, StartStoryForm
 from django.template.defaultfilters import slugify
 from userprofile.models import AuthorProfile
-
-"""
-Story detail view with paragraph form submission
-"""
+from django.forms import inlineformset_factory
+from django.contrib.auth.models import User
 
 
+# Story detail view with paragraph form submission
 def story(request, pk, slug):
     story = get_object_or_404(OriginalStory, pk=pk)
     story_user_paragraphs = story.paragraphs.all()
@@ -26,7 +25,9 @@ def story(request, pk, slug):
     return render(request, 'story_detail.html',
                   {'story': story, 'story_user_paragraphs': story_user_paragraphs, 'add_paragraph': add_paragraph})
 
+
 # Start a story form view
+
 def start_a_story(request):
     if request.method == 'POST':
         start_story_form = StartStoryForm(request.POST)
@@ -42,8 +43,8 @@ def start_a_story(request):
     return render(request, 'start-a-story.html', {'start_story_form': start_story_form})
 
 
-
 # Home view
+
 def home(request):
     home_list = OriginalStory.objects.all()
     new_paragraphs = UserStoryParagraphs.objects.order_by('-user_paragraph_date')[:6]
@@ -55,16 +56,28 @@ def home(request):
 # Registration form
 
 def register(request):
+    author_profile = User()
+    user_form = UserRegistrationForm(instance=author_profile)
+
+    RegistrationInlineFormset = inlineformset_factory(User, AuthorProfile, fields=('author', 'author_image',))
+    formset = RegistrationInlineFormset(instance=author_profile)
+
     if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
+        user_form = UserRegistrationForm(request.POST, request.FILES)
+        formset = RegistrationInlineFormset(request.POST, request.FILES)
+
         if user_form.is_valid():
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
-            new_user.save()
-            return render(request, 'registration-complete.html', {'new_user': new_user})
+            formset = RegistrationInlineFormset(request.POST, request.FILES, instance=new_user)
+
+            if formset.is_valid():
+                new_user.save()
+                formset.save()
+                return render(request, 'registration-complete.html', {'new_user': new_user, 'formset': formset})
     else:
         user_form = UserRegistrationForm()
-    return render(request, 'register.html', {'user_form': user_form})
+    return render(request, 'register.html', {'user_form': user_form, 'formset': formset})
 
 
 def register_complete(request):
@@ -77,4 +90,5 @@ def all_paragraphs(request):
     author_image = AuthorProfile.objects.all()
     new_paragraphs_all = UserStoryParagraphs.objects.order_by('-user_paragraph_date')
     return render(request, 'all-paragraphs.html',
-                  {'all_paragraphs_list': all_paragraphs_list, 'new_paragraphs_all': new_paragraphs_all, 'author_image': author_image})
+                  {'all_paragraphs_list': all_paragraphs_list, 'new_paragraphs_all': new_paragraphs_all,
+                   'author_image': author_image})
