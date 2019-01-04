@@ -3,8 +3,7 @@ from mainsite.models import OriginalStory, UserStoryParagraphs
 from .forms import AddParagraphForm, UserRegistrationForm, StartStoryForm
 from django.template.defaultfilters import slugify
 from userprofile.models import AuthorProfile
-from django.forms import inlineformset_factory
-from django.contrib.auth.models import User
+from django.db.models import Count
 
 
 # Story detail view with paragraph form submission
@@ -35,7 +34,6 @@ def start_a_story(request):
             new_story = start_story_form.save(commit=False)
             new_story.slug = slugify(new_story.story_headline)
             new_story.story_paragraph_author = request.user
-            new_story.original_story_author = request.user.author_profile_image
             new_story.save()
             return redirect('home')
     else:
@@ -56,28 +54,16 @@ def home(request):
 # Registration form
 
 def register(request):
-    author_profile = User()
-    user_form = UserRegistrationForm(instance=author_profile)
-
-    RegistrationInlineFormset = inlineformset_factory(User, AuthorProfile, fields=('author', 'author_image',))
-    formset = RegistrationInlineFormset(instance=author_profile)
 
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST, request.FILES)
-        formset = RegistrationInlineFormset(request.POST, request.FILES)
 
         if user_form.is_valid():
-            new_user = user_form.save(commit=False)
-            new_user.set_password(user_form.cleaned_data['password'])
-            formset = RegistrationInlineFormset(request.POST, request.FILES, instance=new_user)
-
-            if formset.is_valid():
-                new_user.save()
-                formset.save()
-                return render(request, 'registration-complete.html', {'new_user': new_user, 'formset': formset})
+            new_user = user_form.save()
+            return render(request, 'registration-complete.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
-    return render(request, 'register.html', {'user_form': user_form, 'formset': formset})
+    return render(request, 'register.html', {'user_form': user_form})
 
 
 def register_complete(request):

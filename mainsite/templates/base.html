@@ -1,106 +1,123 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Nextparagraph{% endblock %}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,700|Playfair+Display:400,900" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,700|Playfair+Display:400,900"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-  <div class="container">
-  <a class="navbar-brand" href="/">NEXT<span style="font-family: Playfair Display, cursive; font-style:italic">paragraph</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'start_story' %}">Start a story</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categories</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Trending</a>
-        </li>
-      </ul>
-    {% if user.is_authenticated %}
-      <div class="login-logout">
-          Hi {{ user.first_name }}
-      </div>
-      <div><a href="{% url 'logout' %}" class="login-logout">logout</a>
-      </div>
-      {% else %}
-      <a class="minor-nav" href="{% url 'login' %}">Login</a>
-        <a class="minor-nav" href="{% url 'register' %}">Register</a>
-      {% endif %}
-    </div>
-
-  </div>
-  </nav>
-
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
     <div class="container">
-        {% block content %} {% endblock %}
+        <a class="navbar-brand" href="/">NEXT<span style="font-family: Playfair Display, cursive; font-style:italic">paragraph</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'start_story' %}">Start a story</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Trending</a>
+                </li>
+            </ul>
+            {% if user.is_authenticated %}
+                {% if user.author_image %}
+                <img src="{{ user.author_image.url }}" class="login-author-image" alt="{{ user.get_full_name }} | NextParagraph">{% endif %}
+                <div class="login-logout">
+                    Hi {{ user.first_name }}
+                </div>
+                <div><a href="{% url 'logout' %}" class="login-logout">Logout</a>
+                </div>
+            {% else %}
+                <a class="minor-nav" href="{% url 'login' %}">Login</a>
+                <a class="minor-nav" href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </div>
+
+    </div>
+</nav>
+
+<div class="container">
+    {% block content %} {% endblock %}
     <!-- Footer -->
-<footer class="page-footer pt-4">
+    <footer class="page-footer pt-4">
 
-    <!-- Footer Text -->
-    <div class="container-fluid text-center text-md-left">
+        <!-- Footer Text -->
+        <div class="container-fluid text-center text-md-left">
 
-      <!-- Grid row -->
-      <div class="row">
+            <!-- Grid row -->
+            <div class="row">
 
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3">
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
 
-          <!-- Content -->
-          <h5>Footer text 1</h5>
-          <p class="footer-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae harum esse fugiat. Itaque, culpa?</p>
+                    <!-- Content -->
+                    <h5>Footer text 1</h5>
+                    <p class="footer-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente
+                                           sint, nulla, nihil repudiandae commodi voluptatibus corrupti animi sequi
+                                           aliquid magnam debitis, maxime quam recusandae harum esse fugiat. Itaque,
+                                           culpa?</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mb-md-0 mb-3">
+
+                    <!-- Content -->
+                    <h5 class="text-uppercase font-weight-bold">Footer text 2</h5>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi
+                       earum commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam,
+                       aspernatur id excepturi hic.</p>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
 
         </div>
-        <!-- Grid column -->
+        <!-- Footer Text -->
 
-        <hr class="clearfix w-100 d-md-none pb-3">
-
-        <!-- Grid column -->
-        <div class="col-md-6 mb-md-0 mb-3">
-
-          <!-- Content -->
-          <h5 class="text-uppercase font-weight-bold">Footer text 2</h5>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id excepturi hic.</p>
-
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+                                                       Pig70 Development
         </div>
-        <!-- Grid column -->
+        <!-- Copyright -->
 
-      </div>
-      <!-- Grid row -->
-
-    </div>
-    <!-- Footer Text -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      Pig70 Development
-    </div>
-    <!-- Copyright -->
-
-  </footer>
-  <!-- Footer -->
-    </div>
-  <script src="{% static 'js/base.js' %}"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </footer>
+    <!-- Footer -->
+</div>
+<script src="{% static 'js/base.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

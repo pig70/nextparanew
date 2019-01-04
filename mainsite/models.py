@@ -11,9 +11,8 @@ class OriginalStory(models.Model):
     story_publish_date = models.DateTimeField(auto_now_add=True)
     story_first_paragraph = models.TextField(max_length=600, blank=True)
     story_paragraph_author = models.ForeignKey(
-        User, on_delete=models.CASCADE, blank=True, null=True)
+        AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="author")
     slug = models.SlugField(max_length=250, null=True)
-    original_story_author = models.ForeignKey(AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="original_story_author")
 
     def __str__(self):
         return self.story_headline
@@ -29,7 +28,7 @@ class UserStoryParagraphs(models.Model):
     user_paragraph_date = models.DateTimeField(
         default=timezone.now, blank=True, verbose_name="Date added")
     paragraph_author = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True)
+        AuthorProfile, on_delete=models.CASCADE, null=True, blank=True)
     story_belongs_to = models.ForeignKey(
         OriginalStory, on_delete=models.CASCADE, blank=True, null=True, related_name="paragraphs")
     def __str__(self):

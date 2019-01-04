@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
 
@@ -10,4 +12,4 @@ urlpatterns = [
     path('all-paragraphs/', views.all_paragraphs, name='all_paragraphs'),
     path('start-a-story/', views.start_a_story, name='start_story')
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

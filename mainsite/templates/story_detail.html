@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{ story.story_headline }} | Nextparagraph{% endblock %}
 {% block content %}
 
@@ -24,10 +25,11 @@
                     {{ story.story_first_paragraph }}</div>
 
                 {#  First paragraph author image and name  #}
-                {% if story.story_paragraph_author.author_profile_image.author_image %}
-                    <img src="{{ story.story_paragraph_author.author_profile_image.author_image.url }}"
+                {% if story.story_paragraph_author.author_image %}
+                    <img src="{{ story.story_paragraph_author.author_image.url }}"
                          class="article-paragraph-author-image"
-                         alt="{{ story.story_paragraph_author.get_full_name }} on Nextparagraph">{% endif %}
+                         alt="{{ story.story_paragraph_author.get_full_name }} on Nextparagraph">
+                {% endif %}
                 <div class="article-paragraph-author-name col-auto">{{ story.story_paragraph_author.get_full_name }}
                 </div>
 
@@ -38,8 +40,8 @@
 
                     {# Nextparagraphs author image and name #}
                     <div class="col-auto">
-                        {% if paragraph.paragraph_author.author_profile_image.author_image %}
-                            <img src="{{ paragraph.paragraph_author.author_profile_image.author_image.url }}"
+                        {% if paragraph.paragraph_author.author_image %}
+                            <img src="{{ paragraph.paragraph_author.author_image.url }}"
                                  class="article-paragraph-author-image"
                                  alt="{{ paragraph.paragraph_author.get_full_name }} on Nextparagraph">{% endif %}
                         <div class="article-paragraph-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>

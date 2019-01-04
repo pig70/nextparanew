@@ -13,6 +13,8 @@
             <h1>Create an account</h1>
             <div class="registration-box">
                 <form enctype="multipart/form-data" action="." method="post">
+                    {{ user_form.as_p }}
+
 {#                    {{ user_form.username.errors }}#}
 {#                    <label class="form-label" for="id_username">Username</label>#}
 {#                    {{ user_form.username }}#}
@@ -25,16 +27,15 @@
 {#                    {{ user_form.email.errors }}#}
 {#                    <label class="form-label" for="id_email">Email</label>#}
 {#                    {{ user_form.email }}#}
-{#                    {{ user_form.password.errors }}#}
+{#                    {{ user_form.password1.errors }}#}
 {#                    <label class="form-label" for="id_password">Password</label>#}
-{#                    {{ user_form.password }}#}
-{#                    {{ user_form.confirm_password.errors }}#}
+{#                    {{ user_form.password1 }}#}
+{#                    {{ user_form.password2.errors }}#}
 {#                    <label class="form-label" for="id_confirm_password">Confirm password</label>#}
-{#                    {{ user_form.confirm_password }}#}
+{#                    {{ user_form.password2 }}#}
 {#                    {{ user_form.author_image_field.errors }}#}
 {#                    <label class="form-label" for="id_author_image_field">Profile image</label>#}
 {#                    {{ user_form.author_image_field }}#}
-                    {{ user_form.as_p }}
                     {% csrf_token %}
                     <p><input class="btn btn-primary black-button" type="submit" value="Create my account"></p>
                 </form>

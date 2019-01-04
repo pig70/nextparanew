@@ -1,10 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+class AuthorProfile(AbstractUser):
+    author_image = models.ImageField(upload_to='mainsite/static/images/', null=True, blank=True)
 
-class AuthorProfile(models.Model):
-    author_image = models.ImageField(upload_to='mains˙ite/static/images/')
-    author = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True, related_name='author_profile_image')
     def __str__(self):
-        return self.author.get_full_name()
+        return self.get_full_name()

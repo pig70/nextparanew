@@ -18,17 +18,18 @@ a:hover {
 
 h1 {
     font-family: 'Oswald', sans-serif;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 30px;
+    font-weight: 900;
     margin-bottom: 25px;
-    margin-top: 40px;
     padding-left: 15px;
 }
 
 h2 {
     font-family: 'Oswald', serif;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 900;
+    margin: 25px 0;
+    padding-left: 15px;
 }
 
 h5 {
@@ -75,6 +76,13 @@ input[type=text] {
     margin-bottom: 10px;
 }
 
+input[type=file] {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: #000000;
+    display: block;
+}
+
 input[type=password] {
     width: 100%;
     border-radius: 4px;
@@ -88,9 +96,9 @@ input[type=password] {
 }
 
 
-.form-label {
+label {
     font-family: 'Roboto Slab', serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #000000;
 }
@@ -123,6 +131,16 @@ input[type=password] {
     margin-right: 15px;
     float: left;
     vertical-align: middle;
+}
+
+.login-author-image {
+    width: 35px;
+    height: 35px;
+    border: 0;
+    border-radius: 50%;
+    margin-right: 15px;
+    vertical-align: middle;
+    float: left;
 }
 
 .author-name {
@@ -185,6 +203,7 @@ input[type=password] {
     font-weight: 500;
     font-size: 16px;
     margin-right: 20px;
+    display: inline;
 }
 
 .minor-nav {
