@@ -4,6 +4,7 @@ from django.template.defaultfilters import truncatewords
 from django.utils import timezone
 
 from userprofile.models import AuthorProfile
+from tagging.models import StoryTags
 
 #Model for the original story
 class OriginalStory(models.Model):
@@ -13,6 +14,10 @@ class OriginalStory(models.Model):
     story_paragraph_author = models.ForeignKey(
         AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="author")
     slug = models.SlugField(max_length=250, null=True)
+    story_tags = models.ManyToManyField(StoryTags)
+
+    class Meta:
+        verbose_name_plural ='Original stories'
 
     def __str__(self):
         return self.story_headline
@@ -31,6 +36,10 @@ class UserStoryParagraphs(models.Model):
         AuthorProfile, on_delete=models.CASCADE, null=True, blank=True)
     story_belongs_to = models.ForeignKey(
         OriginalStory, on_delete=models.CASCADE, blank=True, null=True, related_name="paragraphs")
+
+    class Meta:
+        verbose_name_plural = 'User paragraphs'
+
     def __str__(self):
         return self.user_paragraph
 

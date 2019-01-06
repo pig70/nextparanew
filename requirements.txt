@@ -1,3 +1,2 @@
 Django~=2.1.1
 Pillow
-django-taggit=0.22.2
