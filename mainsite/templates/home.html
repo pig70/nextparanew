@@ -56,7 +56,7 @@
                             <div class="home-story-author-name">{{ stories.story_paragraph_author }}</div>
                             <div class="home-story-date-added">{{ stories.story_publish_date|date:'d M Y' }}</div>
                         </div>
-                        <div class="home-story-stats">{{ stories.paragraphs.count }} next paragraphs | {{ stories.story_paragraph_author.author.count }} authors | 50 Likes</div>
+                        <div class="home-story-stats">{{ stories.paragraphs.count }} next paragraphs | 10 authors | 50 Likes</div>
                         <a href="{% url 'story' slug=stories.slug pk=stories.pk %}"
                            class="btn btn-primary black-button">Read</a>
                     </div>
@@ -84,7 +84,7 @@
                                 <div class="home-story-author-name">{{ stories.story_paragraph_author.get_full_name }}</div>
                                 <div class="home-story-date-added">{{ stories.story_publish_date|date:'d M Y' }}</div>
                             </div>
-                            <div class="home-story-stats">20 paragraphs | 15 authors | 50 Likes</div>
+                            <div class="home-story-stats">{{ stories.paragraphs.count }} paragraphs | {{ stories.paragraphs }} authors | 50 Likes</div>
                             <a href="{% url 'story' slug=stories.slug pk=stories.pk %}"
                                class="btn btn-primary black-button">Read</a>
                         </div>

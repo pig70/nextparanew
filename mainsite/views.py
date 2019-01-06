@@ -44,7 +44,7 @@ def start_a_story(request):
 # Home view
 
 def home(request):
-    home_list = OriginalStory.objects.all()
+    home_list = UserStoryParagraphs.objects.all()
     new_paragraphs = UserStoryParagraphs.objects.order_by('-user_paragraph_date')[:6]
     home_stories = OriginalStory.objects.order_by('-story_publish_date')
     return render(request, 'home.html',

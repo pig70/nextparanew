@@ -14,7 +14,7 @@ class OriginalStory(models.Model):
     story_paragraph_author = models.ForeignKey(
         AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="author")
     slug = models.SlugField(max_length=250, null=True)
-    story_tags = models.ManyToManyField(StoryTags)
+    story_tags = models.ManyToManyField(StoryTags, blank=True, null=True)
 
     class Meta:
         verbose_name_plural ='Original stories'
@@ -33,7 +33,7 @@ class UserStoryParagraphs(models.Model):
     user_paragraph_date = models.DateTimeField(
         default=timezone.now, blank=True, verbose_name="Date added")
     paragraph_author = models.ForeignKey(
-        AuthorProfile, on_delete=models.CASCADE, null=True, blank=True)
+        AuthorProfile, on_delete=models.CASCADE, null=True, blank=True, related_name="para_author")
     story_belongs_to = models.ForeignKey(
         OriginalStory, on_delete=models.CASCADE, blank=True, null=True, related_name="paragraphs")
 
