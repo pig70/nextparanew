@@ -2,9 +2,9 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import truncatewords
 from django.utils import timezone
+from taggit.managers import TaggableManager
 
 from userprofile.models import AuthorProfile
-from tagging.models import StoryTags
 
 #Model for the original story
 class OriginalStory(models.Model):
@@ -14,7 +14,7 @@ class OriginalStory(models.Model):
     story_paragraph_author = models.ForeignKey(
         AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="author")
     slug = models.SlugField(max_length=250, null=True)
-    story_tags = models.ManyToManyField(StoryTags, blank=True, null=True, related_name='tags_for_story')
+    story_tags = TaggableManager()
 
     class Meta:
         verbose_name_plural ='Original stories'
