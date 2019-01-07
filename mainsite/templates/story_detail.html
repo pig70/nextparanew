@@ -17,7 +17,16 @@
                                                              id="article-watchers-eye-not-watched"></i><span
                             class="watcher-number" id="article-watcher-number">1532</span></div>
                 </div>
-                <div class="article-tags col-sm-12 col-md-12 col-lg-9">Adventure | Science Fiction | Children's</div>
+                <div class="article-tags col-sm-12 col-md-12 col-lg-9">{% for tags in story.story_tags.all %}
+
+                    {% if not forloop.last %}
+                    {{ tags }} |
+                               {% else %} {{ tags }}
+                               {% endif %}
+
+
+                        {% endfor %}
+                </div>
 
                 {# The original story paragraph and author info #}
                 <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">First paragraph</div>

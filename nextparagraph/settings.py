@@ -35,9 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'userprofile',
-    'mainsite',
-    'tagging',
+    'userprofile.apps.UserprofileConfig',
+    'mainsite.apps.MainsiteConfig',
+    'tagging.apps.TaggingConfig',
 ]
 
 MIDDLEWARE = ['django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware',

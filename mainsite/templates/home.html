@@ -56,7 +56,7 @@
                             <div class="home-story-author-name">{{ stories.story_paragraph_author }}</div>
                             <div class="home-story-date-added">{{ stories.story_publish_date|date:'d M Y' }}</div>
                         </div>
-                        <div class="home-story-stats">{{ stories.paragraphs.count }} next paragraphs | 10 authors | 50 Likes</div>
+                        <div class="home-story-stats">{{ stories.paragraphs.count }} next paragraphs</div>
                         <a href="{% url 'story' slug=stories.slug pk=stories.pk %}"
                            class="btn btn-primary black-button">Read</a>
                     </div>
@@ -68,7 +68,7 @@
     <div class="row">
 
         {#  Stories without any paragraphs  #}
-        {% for stories in home_stories %}
+        {% for stories in home_stories|slice:":6" %}
             {% if stories.paragraphs.count == 0 %}
                 <div class="col-sm-12 col-md-4 col-lg-3">
                     <div class="home-story-box d-flex flex-column">
@@ -84,7 +84,7 @@
                                 <div class="home-story-author-name">{{ stories.story_paragraph_author.get_full_name }}</div>
                                 <div class="home-story-date-added">{{ stories.story_publish_date|date:'d M Y' }}</div>
                             </div>
-                            <div class="home-story-stats">{{ stories.paragraphs.count }} paragraphs | {{ stories.paragraphs }} authors | 50 Likes</div>
+                            <div class="home-story-stats">{{ stories.paragraphs.count }} paragraphs</div>
                             <a href="{% url 'story' slug=stories.slug pk=stories.pk %}"
                                class="btn btn-primary black-button">Read</a>
                         </div>

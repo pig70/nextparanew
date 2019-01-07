@@ -1,4 +1,7 @@
 from django.contrib import admin
 from .models import StoryTags
 
-admin.site.register(StoryTags)
+
+@admin.register(StoryTags)
+class StoryTags(admin.ModelAdmin):
+    ordering = ('tags',)

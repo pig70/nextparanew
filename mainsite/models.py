@@ -14,7 +14,7 @@ class OriginalStory(models.Model):
     story_paragraph_author = models.ForeignKey(
         AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="author")
     slug = models.SlugField(max_length=250, null=True)
-    story_tags = models.ManyToManyField(StoryTags, blank=True, null=True)
+    story_tags = models.ManyToManyField(StoryTags, blank=True, null=True, related_name='tags_for_story')
 
     class Meta:
         verbose_name_plural ='Original stories'

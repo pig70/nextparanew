@@ -3,8 +3,7 @@ from mainsite.models import OriginalStory, UserStoryParagraphs
 from .forms import AddParagraphForm, UserRegistrationForm, StartStoryForm
 from django.template.defaultfilters import slugify
 from userprofile.models import AuthorProfile
-from django.db.models import Count
-
+from tagging.models import StoryTags
 
 # Story detail view with paragraph form submission
 def story(request, pk, slug):
@@ -21,8 +20,10 @@ def story(request, pk, slug):
     else:
         add_paragraph = AddParagraphForm()
 
+    story_tags = StoryTags.objects.all()
+
     return render(request, 'story_detail.html',
-                  {'story': story, 'story_user_paragraphs': story_user_paragraphs, 'add_paragraph': add_paragraph})
+                  {'story': story, 'story_user_paragraphs': story_user_paragraphs, 'add_paragraph': add_paragraph, 'story_tags': story_tags})
 
 
 # Start a story form view
@@ -44,11 +45,10 @@ def start_a_story(request):
 # Home view
 
 def home(request):
-    home_list = UserStoryParagraphs.objects.all()
-    new_paragraphs = UserStoryParagraphs.objects.order_by('-user_paragraph_date')[:6]
+    new_paragraphs = UserStoryParagraphs.objects.order_by('-user_paragraph_date')
     home_stories = OriginalStory.objects.order_by('-story_publish_date')
     return render(request, 'home.html',
-                  {'home_list': home_list, 'new_paragraphs': new_paragraphs, 'home_stories': home_stories})
+                  {'new_paragraphs': new_paragraphs, 'home_stories': home_stories})
 
 
 # Registration form
