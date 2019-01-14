@@ -33,6 +33,7 @@ def start_a_story(request):
             new_story.slug = slugify(new_story.story_headline)
             new_story.story_paragraph_author = request.user
             new_story.save()
+            start_story_form.save_m2m()
             return redirect('home')
     else:
         start_story_form = StartStoryForm()

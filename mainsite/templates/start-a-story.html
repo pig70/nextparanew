@@ -14,6 +14,9 @@
 {{ start_story_form.story_first_paragraph.errors }}
                 <label class="form-label" for="id_story_first_paragraph">First paragraph</label>
                 {{ start_story_form.story_first_paragraph }}
+    {{ start_story_form.story_tags.errors }}
+     <label class="form-label" for="id_story_tags">Tags</label>
+    {{ start_story_form.story_tags }}
 {% csrf_token %}
             <p><input class="btn btn-primary black-button" type="submit" value="Start a story"></p>
 </form>

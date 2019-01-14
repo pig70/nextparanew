@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 # Add a paragraph form on a story
 class AddParagraphForm(forms.ModelForm):
-    user_paragraph = forms.CharField(max_length=800, widget=forms.Textarea(attrs={'class': 'user-paragraph-field'}))
+    user_paragraph = forms.CharField(max_length=1000, widget=forms.Textarea(attrs={'class': 'user-paragraph-field'}))
 
     class Meta:
         model = UserStoryParagraphs
@@ -15,7 +15,8 @@ class AddParagraphForm(forms.ModelForm):
 # Start a story form
 class StartStoryForm(forms.ModelForm):
     story_headline = forms.CharField(max_length=70, widget=forms.TextInput(attrs={'class': 'form-field'}))
-    story_first_paragraph = forms.CharField(max_length=600, widget=forms.Textarea(attrs={'class': 'form-field'}))
+    story_first_paragraph = forms.CharField(max_length=1000, widget=forms.Textarea(attrs={'class': 'form-field'}))
+
 
     class Meta:
         model = OriginalStory

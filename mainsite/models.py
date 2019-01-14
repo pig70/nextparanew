@@ -10,7 +10,7 @@ from userprofile.models import AuthorProfile
 class OriginalStory(models.Model):
     story_headline = models.CharField(max_length=70, blank=True)
     story_publish_date = models.DateTimeField(auto_now_add=True)
-    story_first_paragraph = models.TextField(max_length=600, blank=True)
+    story_first_paragraph = models.TextField(max_length=1000, blank=True)
     story_paragraph_author = models.ForeignKey(
         AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="author")
     slug = models.SlugField(max_length=250, null=True)
@@ -29,7 +29,7 @@ class OriginalStory(models.Model):
 
 #Model for the paragraphs added by logged in authors
 class UserStoryParagraphs(models.Model):
-    user_paragraph = models.TextField(max_length=800)
+    user_paragraph = models.TextField(max_length=1000)
     user_paragraph_date = models.DateTimeField(
         default=timezone.now, blank=True, verbose_name="Date added")
     paragraph_author = models.ForeignKey(
