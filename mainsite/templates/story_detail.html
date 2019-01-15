@@ -58,7 +58,7 @@
                 <div class="add-paragraph-container col-sm-12 col-md-12 col-lg-9">
                     {% if request.user.is_authenticated %}
                         <form method="POST">{% csrf_token %}
-                            <label class="form-label" for="id_user_paragraph">Add a paragraph</label>
+                            <label class="form-label" for="id_user_paragraph">Add a paragraph</label> <div class="input-count" id="count">1000 characters left</div>
                             {{ add_paragraph.user_paragraph }}
                             <button class="btn btn-primary black-button" type="submit" name="button">Add</button>
                         </form>

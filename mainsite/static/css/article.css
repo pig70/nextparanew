@@ -114,6 +114,13 @@
     vertical-align: top;
 }
 
+.input-count {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: #888888;
+    float: right;
+}
+
 .add-paragraph-container {
     margin-top: 10px;
 }
