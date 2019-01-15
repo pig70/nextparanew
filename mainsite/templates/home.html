@@ -4,6 +4,7 @@
         <div class="container">
             <div class="homepage-hero-bounding-box d-flex flex-column">
                 {% for paragraph in new_paragraphs|slice:":1" %}
+                    <div class="homepage-hero-title">{{ paragraph.story_belongs_to.story_headline }}</div>
                     <div class="homepage-hero-text">
                     <a href="{% url 'story' slug=paragraph.story_belongs_to.slug pk=paragraph.story_belongs_to.pk %}">
                         {{ paragraph.user_paragraph }}</a>
