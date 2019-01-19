@@ -24,3 +24,10 @@ textarea.addEventListener("input", function () {
         document.getElementById("count").innerHTML = (maxlength - currentLength) + " characters left";
     }
 });
+
+// Toggle hide
+
+document.getElementById("toggle-hide").onclick = toggleContent;
+function toggleContent(){
+    document.getElementById("story-para-author").style.display = 'none';
+}

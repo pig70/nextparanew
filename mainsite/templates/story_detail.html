@@ -17,6 +17,7 @@
                     <div class="article-watchers ml-auto"><i class="far fa-eye fa-lg"
                                                              id="article-watchers-eye-not-watched"></i><span
                             class="watcher-number" id="article-watcher-number">1532</span></div>
+                <div id="toggle-hide">Hide</div>
                 </div>
                 <div class="article-tags col-sm-12 col-md-12 col-lg-9">
                     {{ story.story_tags.all|join:" | " }}
@@ -33,7 +34,7 @@
                          class="article-paragraph-author-image"
                          alt="{{ story.story_paragraph_author.get_full_name }} on Nextparagraph">
                 {% endif %}
-                <div class="article-paragraph-author-name col-auto">{{ story.story_paragraph_author.get_full_name }}
+                <div class="article-paragraph-author-name col-auto" id="story-para-author">{{ story.story_paragraph_author.get_full_name }}
                 </div>
 
                 {# Next paragraphs #}
@@ -47,7 +48,7 @@
                             <img src="{{ paragraph.paragraph_author.author_image.url }}"
                                  class="article-paragraph-author-image"
                                  alt="{{ paragraph.paragraph_author.get_full_name }} on Nextparagraph">{% endif %}
-                        <div class="article-paragraph-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>
+                        <div class="article-paragraph-author-name" id="new-para-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>
                         <div class="nextparagraph-like"><i class="far fa-heart fa-lg"
                                                            id="article-like-heart"></i><span
                                 class="article-like-word mr-auto">Like</span></div>
