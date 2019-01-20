@@ -27,7 +27,6 @@ textarea.addEventListener("input", function () {
 
 // Toggle hide
 
-document.getElementById("toggle-hide").onclick = toggleContent;
-function toggleContent(){
-    document.getElementById("story-para-author").style.display = 'none';
+document.getElementById("toggle-hide").onclick = function(){
+    document.getElementsByClassName(".article-paragraph-author-name").classList.toggle("display-none");
 }

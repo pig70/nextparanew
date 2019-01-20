@@ -131,6 +131,10 @@
     font-weight: 900;
 }
 
+.display-none {
+   display: none;
+}
+
 @media only screen and (max-width: 1000px) {
     .article-first-para {
         margin-right: 0;
