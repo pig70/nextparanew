@@ -13,19 +13,24 @@
                 </div>
                 <div class="row no-gutters">
                     <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 d-flex">
-                        <div class="article-date-info p-2">{{ story.story_publish_date|date:'d M Y' }}</div>
-                        <div class="article-watchers ml-auto"><i class="far fa-eye fa-lg"
+                        <div class="article-date-info p-2" id="story-date">{{ story.story_publish_date|date:'d M Y' }}</div>
+                        <div class="article-watchers ml-auto" id="story-watchers"><i class="far fa-eye fa-lg"
                                                                  id="article-watchers-eye-not-watched"></i><span
                                 class="watcher-number" id="article-watcher-number">1532</span></div>
-                        {#                <a id="toggle-hide">Hide</a>#}
+                    </div>
+
+                <div class="col auto">
                         <label class="switch">
                             <input type="checkbox">
                             <span class="slider round" id="toggle-hide"></span>
                         </label>
+                    <div class="toggle-label">READING MODE</div>
                     </div>
-                    <div class="article-tags col-sm-12 col-md-12 col-lg-9">
+
+                    <div class="article-tags col-sm-12 col-md-12 col-lg-9" id="story-tags">
                         {{ story.story_tags.all|join:" | " }}
                     </div>
+
 
                     {# The original story paragraph and author info #}
                     <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">First paragraph</div>
@@ -64,7 +69,7 @@
                     {# Adding a paragraph code #}
                     <div class="add-paragraph-container col-sm-12 col-md-12 col-lg-9">
                         {% if request.user.is_authenticated %}
-                            <form method="POST">{% csrf_token %}
+                            <form method="POST" id="add-paragraph-form">{% csrf_token %}
                                 <label class="form-label" for="id_user_paragraph">Add a paragraph</label>
                                 <div class="input-count" id="count">1000 characters left</div>
                                 {{ add_paragraph.user_paragraph }}

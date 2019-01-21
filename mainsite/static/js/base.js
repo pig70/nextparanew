@@ -28,8 +28,29 @@ textarea.addEventListener("input", function () {
 // Toggle hide
 
 var hideAuthor = document.getElementsByClassName("article-paragraph-author-name");
-document.getElementById("toggle-hide").onclick = function hideAuthorFunc() {
+var hideAuthorImage = document.getElementsByClassName("article-paragraph-author-image");
+var hideStoryLike = document.getElementsByClassName("nextparagraph-like");
+var hideAddParagraphForm = document.getElementById('add-paragraph-form');
+var hideStoryDate = document.getElementById('story-date');
+var hideStoryTags = document.getElementById('story-tags');
+var hideStorySubhead = document.getElementsByClassName('article-sub-head');
+var hideStoryWatchers = document.getElementById('story-watchers');
+
+document.getElementById("toggle-hide").onclick = function () {
     for (var i = 0; i < hideAuthor.length; i++) {
         hideAuthor[i].classList.toggle('display-none')
     }
+    for (var i = 0; i < hideAuthorImage.length; i++) {
+        hideAuthorImage[i].classList.toggle('display-none')
+    }
+    for (var i = 0; i < hideStoryLike.length; i++) {
+        hideStoryLike[i].classList.toggle('display-none')
+    }
+    for (var i = 0; i < hideStorySubhead.length; i++) {
+        hideStorySubhead[i].classList.toggle('display-none')
+    }
+    hideAddParagraphForm.classList.toggle('display-none')
+    hideStoryDate.classList.toggle('display-none')
+    hideStoryTags.classList.toggle('display-none')
+    hideStoryWatchers.classList.toggle('display-none')
 }
