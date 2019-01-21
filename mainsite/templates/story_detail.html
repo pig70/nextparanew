@@ -4,76 +4,83 @@
 {% block content %}
     <div class="container">
 
-    <div class="article-box">
-        <div class="content-container">
-            <div class="row no-gutters">
+        <div class="article-box">
+            <div class="content-container">
+                <div class="row no-gutters">
 
-                {#  Original story block #}
-                <h1 class="article-title col-12">{{ story.story_headline }}</h1>
-            </div>
-            <div class="row no-gutters">
-                <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 d-flex">
-                    <div class="article-date-info p-2">{{ story.story_publish_date|date:'d M Y' }}</div>
-                    <div class="article-watchers ml-auto"><i class="far fa-eye fa-lg"
-                                                             id="article-watchers-eye-not-watched"></i><span
-                            class="watcher-number" id="article-watcher-number">1532</span></div>
-                <div id="toggle-hide">Hide</div>
+                    {#  Original story block #}
+                    <h1 class="article-title col-12">{{ story.story_headline }}</h1>
                 </div>
-                <div class="article-tags col-sm-12 col-md-12 col-lg-9">
-                    {{ story.story_tags.all|join:" | " }}
-                </div>
-
-                {# The original story paragraph and author info #}
-                <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">First paragraph</div>
-                <div class="article-first-para col-sm-12 col-md-12 col-lg-9">
-                    {{ story.story_first_paragraph }}</div>
-
-                {#  First paragraph author image and name  #}
-                {% if story.story_paragraph_author.author_image %}
-                    <img src="{{ story.story_paragraph_author.author_image.url }}"
-                         class="article-paragraph-author-image"
-                         alt="{{ story.story_paragraph_author.get_full_name }} on Nextparagraph">
-                {% endif %}
-                <div class="article-paragraph-author-name col-auto" id="story-para-author">{{ story.story_paragraph_author.get_full_name }}
-                </div>
-
-                {# Next paragraphs #}
-                <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">Next paragraphs</div>
-                {% for paragraph in story_user_paragraphs %}
-                    <div class="article-paragraph-text col-sm-12 col-md-12 col-lg-9">{{ paragraph.user_paragraph|linebreaksbr }}</div>
-
-                    {# Nextparagraphs author image and name #}
-                   <div class="col-auto">
-                        {% if paragraph.paragraph_author.author_image %}
-                            <img src="{{ paragraph.paragraph_author.author_image.url }}"
-                                 class="article-paragraph-author-image"
-                                 alt="{{ paragraph.paragraph_author.get_full_name }} on Nextparagraph">{% endif %}
-                        <div class="article-paragraph-author-name" id="new-para-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>
-                        <div class="nextparagraph-like"><i class="far fa-heart fa-lg"
-                                                           id="article-like-heart"></i><span
-                                class="article-like-word mr-auto">Like</span></div>
+                <div class="row no-gutters">
+                    <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 d-flex">
+                        <div class="article-date-info p-2">{{ story.story_publish_date|date:'d M Y' }}</div>
+                        <div class="article-watchers ml-auto"><i class="far fa-eye fa-lg"
+                                                                 id="article-watchers-eye-not-watched"></i><span
+                                class="watcher-number" id="article-watcher-number">1532</span></div>
+                        {#                <a id="toggle-hide">Hide</a>#}
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round" id="toggle-hide"></span>
+                        </label>
                     </div>
-                {% endfor %}
+                    <div class="article-tags col-sm-12 col-md-12 col-lg-9">
+                        {{ story.story_tags.all|join:" | " }}
+                    </div>
 
-                {# Adding a paragraph code #}
-                <div class="add-paragraph-container col-sm-12 col-md-12 col-lg-9">
-                    {% if request.user.is_authenticated %}
-                        <form method="POST">{% csrf_token %}
-                            <label class="form-label" for="id_user_paragraph">Add a paragraph</label> <div class="input-count" id="count">1000 characters left</div>
-                            {{ add_paragraph.user_paragraph }}
-                            <button class="btn btn-primary black-button" type="submit" name="button">Add</button>
-                        </form>
-                    {% else %}
-                        <div class="log-in-to-add-prompt-bold">
-                            <p>You must be logged in to add a paragraph</p>
-                            <a class="btn btn-primary black-button" href="{% url 'login' %}">Login</a><a
-                                class="btn btn-primary black-button" href="{% url 'register' %}">Register Now</a>
-                        </div>
+                    {# The original story paragraph and author info #}
+                    <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">First paragraph</div>
+                    <div class="article-first-para col-sm-12 col-md-12 col-lg-9">
+                        {{ story.story_first_paragraph }}</div>
+
+                    {#  First paragraph author image and name  #}
+                    {% if story.story_paragraph_author.author_image %}
+                        <img src="{{ story.story_paragraph_author.author_image.url }}"
+                             class="article-paragraph-author-image"
+                             alt="{{ story.story_paragraph_author.get_full_name }} on Nextparagraph">
                     {% endif %}
+                    <div class="article-paragraph-author-name col-auto"
+                         id="story-para-author">{{ story.story_paragraph_author.get_full_name }}
+                    </div>
+
+                    {# Next paragraphs #}
+                    <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">Next paragraphs</div>
+                    {% for paragraph in story_user_paragraphs %}
+                        <div class="article-paragraph-text col-sm-12 col-md-12 col-lg-9">{{ paragraph.user_paragraph|linebreaksbr }}</div>
+
+                        {# Nextparagraphs author image and name #}
+                        <div class="col-auto">
+                            {% if paragraph.paragraph_author.author_image %}
+                                <img src="{{ paragraph.paragraph_author.author_image.url }}"
+                                     class="article-paragraph-author-image"
+                                     alt="{{ paragraph.paragraph_author.get_full_name }} on Nextparagraph">{% endif %}
+                            <div class="article-paragraph-author-name"
+                                 id="new-para-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>
+                            <div class="nextparagraph-like"><i class="far fa-heart fa-lg"
+                                                               id="article-like-heart"></i><span
+                                    class="article-like-word mr-auto">Like</span></div>
+                        </div>
+                    {% endfor %}
+
+                    {# Adding a paragraph code #}
+                    <div class="add-paragraph-container col-sm-12 col-md-12 col-lg-9">
+                        {% if request.user.is_authenticated %}
+                            <form method="POST">{% csrf_token %}
+                                <label class="form-label" for="id_user_paragraph">Add a paragraph</label>
+                                <div class="input-count" id="count">1000 characters left</div>
+                                {{ add_paragraph.user_paragraph }}
+                                <button class="btn btn-primary black-button" type="submit" name="button">Add</button>
+                            </form>
+                        {% else %}
+                            <div class="log-in-to-add-prompt-bold">
+                                <p>You must be logged in to add a paragraph</p>
+                                <a class="btn btn-primary black-button" href="{% url 'login' %}">Login</a><a
+                                    class="btn btn-primary black-button" href="{% url 'register' %}">Register Now</a>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
 {% endblock %}

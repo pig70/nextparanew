@@ -18,7 +18,7 @@ var maxlength = textarea.getAttribute("maxlength");
 
 textarea.addEventListener("input", function () {
     var currentLength = this.value.length;
-    if ( currentLength == maxlength ) {
+    if (currentLength == maxlength) {
         document.getElementById("count").innerHTML = "No more characters left";
     } else {
         document.getElementById("count").innerHTML = (maxlength - currentLength) + " characters left";
@@ -27,6 +27,9 @@ textarea.addEventListener("input", function () {
 
 // Toggle hide
 
-document.getElementById("toggle-hide").onclick = function(){
-    document.getElementsByClassName(".article-paragraph-author-name").classList.toggle("display-none");
+var hideAuthor = document.getElementsByClassName("article-paragraph-author-name");
+document.getElementById("toggle-hide").onclick = function hideAuthorFunc() {
+    for (var i = 0; i < hideAuthor.length; i++) {
+        hideAuthor[i].classList.toggle('display-none')
+    }
 }
