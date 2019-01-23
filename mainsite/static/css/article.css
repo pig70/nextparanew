@@ -150,6 +150,20 @@
 }
 
 /* The switch - the box around the slider */
+.reading-mode-toggle {
+    position: fixed;
+    bottom: 0;
+    right: 5rem;
+    height: 55px;
+    width: 200px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    background-color: #ffffff;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding-top: 12px;
+}
+
 .switch {
     position: relative;
     display: inline-block;
