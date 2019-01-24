@@ -76,6 +76,18 @@ input[type=text] {
     margin-bottom: 10px;
 }
 
+input[type=email] {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #bfbfbf;
+    font-family: 'Oswald', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #000000;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
 input[type=file] {
     font-family: 'Oswald', sans-serif;
     font-size: 14px;
@@ -128,7 +140,6 @@ label {
     border: 0;
     margin-right: 15px;
     vertical-align: middle;
-    float: left;
 }
 
 .author-name {

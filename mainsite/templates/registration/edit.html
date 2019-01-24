@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block title %}Home | Nextparagraph{% endblock %} {% block content %}
+    <div class="registration-container">
+        <h1>Edit your profile</h1>
+        <div class="registration-box">
+            <form actiion="." method="post">
+                {{ edit_profile_form.username.errors }}
+                <label class="form-label" for="id_username">Username</label>
+                {{ edit_profile_form.username }}
+
+                {{ edit_profile_form.first_name.errors }}
+                <label class="form-label" for="id_first_name">First name</label>
+                {{ edit_profile_form.first_name }}
+
+                {{ edit_profile_form.last_name.errors }}
+                <label class="form-label" for="id_last_name">Last name</label>
+                {{ edit_profile_form.last_name }}
+
+                {{ edit_profile_form.email.errors }}
+                <label class="form-label" for="id_email">Email</label>
+                {{ edit_profile_form.email }}
+
+                {% csrf_token %}
+                <p><input class="btn btn-primary black-button" type="submit" value="Save my profile"></p>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}

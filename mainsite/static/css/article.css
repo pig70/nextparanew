@@ -72,7 +72,6 @@
 .article-paragraph-author-image {
     width: 25px;
     height: 25px;
-    border-radius: 50%;
     margin: 0 3px 10px 0;
     vertical-align: middle;
     display: inline;
@@ -140,16 +139,8 @@
     display: none;
 }
 
-/* Toggle switch */
+/* Reading mode toggle */
 
-.toggle-label {
-    font-family: 'Oswald', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    display: inline-block;
-}
-
-/* The switch - the box around the slider */
 .reading-mode-toggle {
     position: fixed;
     bottom: 0;
@@ -163,6 +154,15 @@
     border-top-right-radius: 6px;
     padding-top: 12px;
 }
+
+.toggle-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* The switch - the box around the slider */
 
 .switch {
     position: relative;
