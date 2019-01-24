@@ -40,7 +40,7 @@
             </ul>
             {% if user.is_authenticated %}
                 {% if user.author_image %}
-                <img src="{{ user.author_image.url }}" class="login-author-image" alt="{{ user.get_full_name }} | NextParagraph">{% endif %}
+                <img src="{{ user.author_image.url }}" class="login-author-image rounded-circle" alt="{{ user.get_full_name }} | NextParagraph">{% endif %}
                 <div class="login-logout">
                     Hi {{ user.first_name }}
                 </div>

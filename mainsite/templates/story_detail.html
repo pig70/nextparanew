@@ -40,7 +40,7 @@
                     {#  First paragraph author image and name  #}
                     {% if story.story_paragraph_author.author_image %}
                         <img src="{{ story.story_paragraph_author.author_image.url }}"
-                             class="article-paragraph-author-image"
+                             class="article-paragraph-author-image rounded-circle"
                              alt="{{ story.story_paragraph_author.get_full_name }} on Nextparagraph">
                     {% endif %}
                     <div class="article-paragraph-author-name col-auto"
@@ -56,7 +56,7 @@
                         <div class="col-auto">
                             {% if paragraph.paragraph_author.author_image %}
                                 <img src="{{ paragraph.paragraph_author.author_image.url }}"
-                                     class="article-paragraph-author-image"
+                                     class="article-paragraph-author-image rounded-circle"
                                      alt="{{ paragraph.paragraph_author.get_full_name }} on Nextparagraph">{% endif %}
                             <div class="article-paragraph-author-name"
                                  id="new-para-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>
