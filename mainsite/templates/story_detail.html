@@ -8,17 +8,26 @@
             <div class="content-container">
                 <div class="row no-gutters">
 
-                    {#  Original story block #}
+{#  Original story block #}
                     <h1 class="article-title col-12">{{ story.story_headline }}</h1>
                 </div>
                 <div class="row no-gutters">
                     <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 d-flex">
                         <div class="article-date-info p-2" id="story-date">{{ story.story_publish_date|date:'d M Y' }}</div>
+{# Story watchers #}
                         <div class="article-watchers ml-auto" id="story-watchers"><i class="far fa-eye fa-lg"
-                                                                 id="article-watchers-eye-not-watched"></i><span
-                                class="watcher-number" id="article-watcher-number">1532</span></div>
+                                                                 id="article-watchers-eye-not-watched"></i>
+                            {% if story.story_watchers.count == 0 %}
+                            <span
+                                class="watcher-number" id="article-watcher-number">No watchers</span>
+                        {% else %}
+                            <span
+                                class="watcher-number" id="article-watcher-number">{{ story.story_watchers.count }}</span>
+                    {% endif %}
+                    </div>
                     </div>
 
+{# Reading toggle  #}
                 <div class="reading-mode-toggle">
                         <label class="switch">
                             <input type="checkbox">
@@ -33,7 +42,8 @@
 
 
                     {# The original story paragraph and author info #}
-                    <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">First paragraph</div>
+                <div class="col-sm-12 col-md-12 col-lg-9">
+                    <div class="article-sub-head" id="first-para-sub-head">First paragraph</div></div>
                     <div class="article-first-para col-sm-12 col-md-12 col-lg-9">
                         {{ story.story_first_paragraph }}</div>
 
@@ -48,7 +58,8 @@
                     </div>
 
                     {# Next paragraphs #}
-                    <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">Next paragraphs</div>
+                <div class="col-sm-12 col-md-12 col-lg-9">
+                    <div class="article-sub-head" id="next-para-sub-head">Next paragraphs</div></div>
                     {% for paragraph in story_user_paragraphs %}
                         <div class="article-paragraph-text col-sm-12 col-md-12 col-lg-9">{{ paragraph.user_paragraph|linebreaksbr }}</div>
 

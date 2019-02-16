@@ -15,7 +15,7 @@ class OriginalStory(models.Model):
         AuthorProfile, on_delete=models.CASCADE, blank=True, null=True, related_name="author")
     slug = models.SlugField(max_length=250, null=True)
     story_tags = TaggableManager()
-    story_watchers = models.ManyToManyField(AuthorProfile, blank=True, related_name='watchhers')
+    story_watchers = models.ManyToManyField(AuthorProfile, blank=True, related_name='watchers')
 
     class Meta:
         verbose_name_plural ='Original stories'

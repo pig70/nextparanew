@@ -4,8 +4,7 @@ from .forms import AddParagraphForm, UserRegistrationForm, StartStoryForm, EditP
 from django.template.defaultfilters import slugify
 from userprofile.models import AuthorProfile
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-
+from django.views.generic import RedirectView
 # Home view
 
 def home(request):
@@ -33,6 +32,18 @@ def story(request, pk, slug):
     return render(request, 'story_detail.html',
                   {'story': story, 'story_user_paragraphs': story_user_paragraphs, 'add_paragraph': add_paragraph})
 
+
+# Watchers button
+
+class WatcherCountRedirect(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        slug = self.kwargs.get("slug")
+        pk = self.kwargs.get("pk")
+        print(pk)
+        print(slug)
+        obj = get_object_or_404(OriginalStory, pk=pk, slug=slug)
+        url_ = obj.get_absolute_url()
+        return url_
 
 # Start a story form view
 
