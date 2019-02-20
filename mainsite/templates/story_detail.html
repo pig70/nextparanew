@@ -15,7 +15,8 @@
                     <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 d-flex">
                         <div class="article-date-info p-2" id="story-date">{{ story.story_publish_date|date:'d M Y' }}</div>
 {# Story watchers #}
-                        <div class="article-watchers ml-auto" id="story-watchers"><i class="far fa-eye fa-lg"
+                    {% if user.is_authenticated %}
+                        <div class="watcher-number ml-auto" id="story-watchers"><i class="far fa-eye fa-lg"
                                                                  id="article-watchers-eye-not-watched"></i>
                             {% if story.story_watchers.count == 0 %}
                             <span
@@ -25,6 +26,9 @@
                                 class="watcher-number" id="article-watcher-number">{{ story.story_watchers.count }}</span>
                     {% endif %}
                     </div>
+                        {% else %}
+                        <div class="watcher-number ml-auto">{{ story.story_watchers.count }} people are watching this story</div>
+                    {% endif %}
                     </div>
 
 {# Reading toggle  #}

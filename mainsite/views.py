@@ -103,3 +103,21 @@ def edit_profile(request):
         edit_profile_form = EditProfileForm(instance=request.user)
 
     return render(request, 'registration/edit.html', {'edit_profile_form': edit_profile_form})
+
+
+# Like a story
+@login_required
+def like_story(request):
+    story_id = None
+    if request.method == 'GET':
+        story_id = request.GET['story_id']
+
+    likes = 0
+    if story_id:
+        story = OriginalStory.objects.get(id=int(story_id))
+        if story:
+            likes = story.likes + 1
+            story.likes =  likes
+            story.save()
+
+    return HttpResponse(likes)
