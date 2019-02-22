@@ -5,6 +5,9 @@ from django.template.defaultfilters import slugify
 from userprofile.models import AuthorProfile
 from django.contrib.auth.decorators import login_required
 from django.views.generic import RedirectView
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+
 # Home view
 
 def home(request):
@@ -32,18 +35,6 @@ def story(request, pk, slug):
     return render(request, 'story_detail.html',
                   {'story': story, 'story_user_paragraphs': story_user_paragraphs, 'add_paragraph': add_paragraph})
 
-
-# Watchers button
-
-class WatcherCountRedirect(RedirectView):
-    def get_redirect_url(self, *args, **kwargs):
-        slug = self.kwargs.get("slug")
-        pk = self.kwargs.get("pk")
-        print(pk)
-        print(slug)
-        obj = get_object_or_404(OriginalStory, pk=pk, slug=slug)
-        url_ = obj.get_absolute_url()
-        return url_
 
 # Start a story form view
 
@@ -107,17 +98,18 @@ def edit_profile(request):
 
 # Like a story
 @login_required
+@require_POST
 def like_story(request):
-    story_id = None
-    if request.method == 'GET':
-        story_id = request.GET['story_id']
-
-    likes = 0
-    if story_id:
-        story = OriginalStory.objects.get(id=int(story_id))
-        if story:
-            likes = story.likes + 1
-            story.likes =  likes
-            story.save()
-
-    return HttpResponse(likes)
+    story_id = request.POST.get('id')
+    action = request.POST.get('action')
+    if story_id and action:
+        try:
+            story = OriginalStory.objects.get(id=story_id)
+            if action == 'like':
+                story.story_watchers.add(request.user)
+            else:
+                story.story_watchers.remove(request.user)
+            return JsonResponse({'status':'ok'})
+        except:
+            pass
+        return JsonResponse({'status':'ko'})
