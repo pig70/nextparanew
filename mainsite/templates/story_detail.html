@@ -8,17 +8,35 @@
             <div class="content-container">
                 <div class="row no-gutters">
 
-                    {#  Original story block #}
+{#  Original story block #}
                     <h1 class="article-title col-12">{{ story.story_headline }}</h1>
                 </div>
                 <div class="row no-gutters">
                     <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 d-flex">
                         <div class="article-date-info p-2" id="story-date">{{ story.story_publish_date|date:'d M Y' }}</div>
-                        <div class="article-watchers ml-auto" id="story-watchers"><i class="far fa-eye fa-lg"
-                                                                 id="article-watchers-eye-not-watched"></i><span
-                                class="watcher-number" id="article-watcher-number">1532</span></div>
+{# Story watchers #}
+                    {% with watchers_count=story.story_watchers.count users_like=story.story_watchers.all %}
+                    {% if user.is_authenticated %}
+                        <div class="watcher-number ml-auto" id="story-watchers">
+                            <a href="#" data-id="{{ story.id }}" data-action="{% if request.user in users_like %}un{% endif %}like" class="like-button">
+                                {% if request.user in users_like %}<i class="fas fa-eye fa-lg" id="article-watchers-eye-not-watched"></i>{% else %}<i class="fas fa-eye fa-lg" id="article-watchers-eye-not-watched"></i>{% endif %}
+                            </a>
+                            {% if watchers_count == 0 %}
+                            <span
+                                class="article-date-info" id="article-watcher-number">No watchers</span>
+                        {% else %}
+                            <span
+                                class="article-date-info" id="article-watcher-number">{{ watchers_count }} {% if watchers_count < 2 %}watcher {% else %}watchers{% endif %}</span>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <div class="article-date-info ml-auto"><i class="far fa-eye fa-lg"></i> No watchers - log in to watch</div>
+                    {% endif %}
+                    {% endwith %}
+
                     </div>
 
+{# Reading toggle  #}
                 <div class="reading-mode-toggle">
                         <label class="switch">
                             <input type="checkbox">
@@ -33,14 +51,15 @@
 
 
                     {# The original story paragraph and author info #}
-                    <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">First paragraph</div>
+                <div class="col-sm-12 col-md-12 col-lg-9">
+                    <div class="article-sub-head" id="first-para-sub-head">First paragraph</div></div>
                     <div class="article-first-para col-sm-12 col-md-12 col-lg-9">
                         {{ story.story_first_paragraph }}</div>
 
                     {#  First paragraph author image and name  #}
                     {% if story.story_paragraph_author.author_image %}
                         <img src="{{ story.story_paragraph_author.author_image.url }}"
-                             class="article-paragraph-author-image"
+                             class="article-paragraph-author-image rounded-circle"
                              alt="{{ story.story_paragraph_author.get_full_name }} on Nextparagraph">
                     {% endif %}
                     <div class="article-paragraph-author-name col-auto"
@@ -48,7 +67,8 @@
                     </div>
 
                     {# Next paragraphs #}
-                    <div class="article-sub-head col-sm-12 col-md-12 col-lg-9">Next paragraphs</div>
+                <div class="col-sm-12 col-md-12 col-lg-9">
+                    <div class="article-sub-head" id="next-para-sub-head">Next paragraphs</div></div>
                     {% for paragraph in story_user_paragraphs %}
                         <div class="article-paragraph-text col-sm-12 col-md-12 col-lg-9">{{ paragraph.user_paragraph|linebreaksbr }}</div>
 
@@ -56,7 +76,7 @@
                         <div class="col-auto">
                             {% if paragraph.paragraph_author.author_image %}
                                 <img src="{{ paragraph.paragraph_author.author_image.url }}"
-                                     class="article-paragraph-author-image"
+                                     class="article-paragraph-author-image rounded-circle"
                                      alt="{{ paragraph.paragraph_author.get_full_name }} on Nextparagraph">{% endif %}
                             <div class="article-paragraph-author-name"
                                  id="new-para-author-name">{{ paragraph.paragraph_author.get_full_name }}</div>

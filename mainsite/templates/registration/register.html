@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Create and account {% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="reg-pages-text">
+        <div>You've already registered and logged in.<br>
+            <strong><a href="{% url 'start_story' %}">Start some stories!</a></strong>
+        </div>
+        </div>
+
+    {% else %}
+        <div class="registration-container">
+            <h1>Create an account</h1>
+            <div class="registration-box">
+                <form enctype="multipart/form-data" action="." method="post">
+                    {{ user_form.as_p }}
+                    {% csrf_token %}
+                    <p><input class="btn btn-primary black-button" type="submit" value="Create my account"></p>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

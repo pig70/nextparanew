@@ -38,26 +38,36 @@
                     <a class="nav-link" href="#">Trending</a>
                 </li>
             </ul>
-            {% if user.is_authenticated %}
-                {% if user.author_image %}
-                <img src="{{ user.author_image.url }}" class="login-author-image" alt="{{ user.get_full_name }} | NextParagraph">{% endif %}
-                <div class="login-logout">
-                    Hi {{ user.first_name }}
-                </div>
-                <div><a href="{% url 'logout' %}" class="login-logout">Logout</a>
-                </div>
-            {% else %}
-                <a class="minor-nav" href="{% url 'login' %}">Login</a>
-                <a class="minor-nav" href="{% url 'register' %}">Register</a>
-            {% endif %}
+            <div class="d-flex">
+                {% if user.is_authenticated %}
+                    <div class="nav-item dropdown">
+                        {% if user.author_image %}
+                            <img src="{{ user.author_image.url }}" class="login-author-image rounded-circle"
+                                 alt="{{ user.get_full_name }} | NextParagraph">{% endif %}
+                        <a class="login-logout dropdown-toggle" role="button" id="navbarDropdown"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Hi {{ user.first_name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a href="{% url 'edit_profile' %}" class="login-logout dropdown-item">Edit profile</a>
+                            <a href="{% url 'logout' %}" class="login-logout dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                    </div>
+                {% else %}
+                    <a class="minor-nav" href="{% url 'login' %}">Login</a>
+                    <a class="minor-nav" href="{% url 'register' %}">Register</a>
+
+                {% endif %}
         </div>
 
     </div>
 </nav>
 
-    {% block content %} {% endblock %}
-  <div class="container">
-      <!-- Footer -->
+{% block content %} {% endblock %}
+<div class="container">
+    <!-- Footer -->
     <footer class="page-footer pt-4">
 
         <!-- Footer Text -->
@@ -107,7 +117,7 @@
 
     </footer>
     <!-- Footer -->
-  </div>
+</div>
 
 <script src="{% static 'js/base.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -119,6 +129,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 </body>
 
 </html>

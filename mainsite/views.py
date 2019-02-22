@@ -1,8 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from mainsite.models import OriginalStory, UserStoryParagraphs
-from .forms import AddParagraphForm, UserRegistrationForm, StartStoryForm
+from .forms import AddParagraphForm, UserRegistrationForm, StartStoryForm, EditProfileForm
 from django.template.defaultfilters import slugify
 from userprofile.models import AuthorProfile
+from django.contrib.auth.decorators import login_required
+from django.views.generic import RedirectView
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+
+# Home view
+
+def home(request):
+    new_paragraphs = UserStoryParagraphs.objects.order_by('-user_paragraph_date')
+    home_stories = OriginalStory.objects.order_by('-story_publish_date')
+    return render(request, 'home.html',
+                  {'new_paragraphs': new_paragraphs, 'home_stories': home_stories})
+
 
 # Story detail view with paragraph form submission
 def story(request, pk, slug):
@@ -40,13 +53,14 @@ def start_a_story(request):
     return render(request, 'start-a-story.html', {'start_story_form': start_story_form})
 
 
-# Home view
-
-def home(request):
-    new_paragraphs = UserStoryParagraphs.objects.order_by('-user_paragraph_date')
-    home_stories = OriginalStory.objects.order_by('-story_publish_date')
-    return render(request, 'home.html',
-                  {'new_paragraphs': new_paragraphs, 'home_stories': home_stories})
+# All paragraphs section view
+def all_paragraphs(request):
+    all_paragraphs_list = OriginalStory.objects.all()
+    author_image = AuthorProfile.objects.all()
+    new_paragraphs_all = UserStoryParagraphs.objects.order_by('-user_paragraph_date')
+    return render(request, 'all-paragraphs.html',
+                  {'all_paragraphs_list': all_paragraphs_list, 'new_paragraphs_all': new_paragraphs_all,
+                   'author_image': author_image})
 
 
 # Registration form
@@ -61,18 +75,41 @@ def register(request):
             return render(request, 'registration-complete.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
-    return render(request, 'register.html', {'user_form': user_form})
+    return render(request, 'registration/register.html', {'user_form': user_form})
 
 
 def register_complete(request):
-    return render(request, 'registration-complete.html')
+    return render(request, 'registration/registration-complete.html')
 
 
-# All paragraphs section view
-def all_paragraphs(request):
-    all_paragraphs_list = OriginalStory.objects.all()
-    author_image = AuthorProfile.objects.all()
-    new_paragraphs_all = UserStoryParagraphs.objects.order_by('-user_paragraph_date')
-    return render(request, 'all-paragraphs.html',
-                  {'all_paragraphs_list': all_paragraphs_list, 'new_paragraphs_all': new_paragraphs_all,
-                   'author_image': author_image})
+# Edit profile form
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        edit_profile_form = EditProfileForm(instance=request.user, data=request.POST)
+        if edit_profile_form.is_valid():
+            edit_profile_form.save()
+    else:
+        edit_profile_form = EditProfileForm(instance=request.user)
+
+    return render(request, 'registration/edit.html', {'edit_profile_form': edit_profile_form})
+
+
+# Like a story
+@login_required
+@require_POST
+def like_story(request):
+    story_id = request.POST.get('id')
+    action = request.POST.get('action')
+    if story_id and action:
+        try:
+            story = OriginalStory.objects.get(id=story_id)
+            if action == 'like':
+                story.story_watchers.add(request.user)
+            else:
+                story.story_watchers.remove(request.user)
+            return JsonResponse({'status':'ok'})
+        except:
+            pass
+        return JsonResponse({'status':'ko'})

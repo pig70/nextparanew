@@ -14,7 +14,7 @@
                         {% if paragraph.paragraph_author.author_image %}
                             <img src="{{ paragraph.paragraph_author.author_image.url }}"
                                  alt="{{ paragraph.paragraph_author.get_full_name }} | NextParagraph"
-                                 class="homepage-hero-author-image">
+                                 class="homepage-hero-author-image rounded-circle">
                         {% endif %}
                         <div class="homepage-hero-author-name">
                             {{ paragraph.paragraph_author }}
@@ -32,8 +32,7 @@
                 Collaborative storytelling made easy
             </div>
     <div class="container">
-
-        {# Latest paragraphs in detail  #}
+{#Latest paragraphs in detail#}
         <h1>Latest paragraphs</h1>
         <div class="row">
             {% for paragraph in new_paragraphs|slice:"2:" %}
@@ -43,7 +42,7 @@
                             {% if paragraph.paragraph_author.author_image %}
                                 <img src="{{ paragraph.paragraph_author.author_image.url }}"
                                      alt="{{ paragraph.paragraph_author.get_full_name }} | NextParagraph"
-                                     class="author-image">
+                                     class="author-image rounded-circle">
                             {% endif %}
                             <div class="author-name">
                                 {{ paragraph.paragraph_author }}
@@ -72,7 +71,7 @@
         </div>
         <div class="see-more-link text-center"><a href="{% url 'all_paragraphs' %}">See all paragraphs</a></div>
 
-        {#  All of the stories by date added  #}
+{# All of the stories by date added #}
         <h2>All stories</h2>
         <div class="row">
             {% for stories in home_stories %}
@@ -85,7 +84,7 @@
                             <div class="home-story-author">
                                 <div class="box-colon-text">Started by:</div>
                                 {% if stories.story_paragraph_author.author_image %}
-                                    <img class="home-story-author-image"
+                                    <img class="home-story-author-image rounded-circle"
                                          src="{{ stories.story_paragraph_author.author_image.url }}"
                                          alt="{{ stories.story_paragraph_author.get_full_name }} | NextParagraph">{% endif %}
                                 <div class="home-story-author-name">{{ stories.story_paragraph_author }}</div>
@@ -102,7 +101,7 @@
         <h2>Stories without paragraphs</h2>
         <div class="row">
 
-            {#  Stories without any paragraphs  #}
+{# Stories without any paragraphs #}
             {% for stories in home_stories|slice:":6" %}
                 {% if stories.paragraphs.count == 0 %}
                     <div class="col-sm-12 col-md-4 col-lg-3">
@@ -114,7 +113,7 @@
                                 <div class="home-story-author">
                                     <div class="box-colon-text">Started by:</div>
                                     {% if stories.story_paragraph_author.author_image %}
-                                        <img class="home-story-author-image"
+                                        <img class="home-story-author-image rounded-circle"
                                              src="{{ stories.story_paragraph_author.author_image.url }}"
                                              alt="{{ stories.story_paragraph_author.get_full_name }} | NextParagraph">{% endif %}
                                     <div class="home-story-author-name">{{ stories.story_paragraph_author.get_full_name }}</div>

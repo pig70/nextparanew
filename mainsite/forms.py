@@ -1,7 +1,7 @@
 from django import forms
 from .models import UserStoryParagraphs,OriginalStory
 from userprofile.models import AuthorProfile
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Add a paragraph form on a story
@@ -16,7 +16,6 @@ class AddParagraphForm(forms.ModelForm):
 class StartStoryForm(forms.ModelForm):
     story_headline = forms.CharField(max_length=70, widget=forms.TextInput(attrs={'class': 'form-field'}))
     story_first_paragraph = forms.CharField(max_length=1000, widget=forms.Textarea(attrs={'class': 'form-field'}))
-
 
     class Meta:
         model = OriginalStory
@@ -44,3 +43,15 @@ class UserRegistrationForm(UserCreationForm):
         if cd['password1'] != cd['password2']:
             raise forms.ValidationError('Passwords do not match')
         return cd['password2']
+
+# Edit profile form
+
+class EditProfileForm(forms.ModelForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-field'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-field'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-field'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-field'}))
+
+    class Meta:
+        model = AuthorProfile
+        fields = {'username', 'first_name', 'last_name', 'email'}
