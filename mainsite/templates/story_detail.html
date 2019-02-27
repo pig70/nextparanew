@@ -16,22 +16,36 @@
                         <div class="article-date-info p-2" id="story-date">{{ story.story_publish_date|date:'d M Y' }}</div>
 {# Story watchers #}
                     {% with watchers_count=story.story_watchers.count users_like=story.story_watchers.all %}
-                    {% if user.is_authenticated %}
                         <div class="watcher-number ml-auto" id="story-watchers">
-                            <a href="#" data-id="{{ story.id }}" data-action="{% if request.user in users_like %}un{% endif %}like" class="like-button">
-                                {% if request.user in users_like %}<i class="fas fa-eye fa-lg" id="article-watchers-eye-not-watched"></i>{% else %}<i class="fas fa-eye fa-lg" id="article-watchers-eye-not-watched"></i>{% endif %}
-                            </a>
+                       {% if user.is_authenticated %}
+
+                        {#  Show the right eye icon if the user is a watcher #}
+                        {% if users_like == request.user %}
+                            <i class="fas fa-eye fa-lg" id="article-watchers-eye-logged-in"></i>
+                            {% else %}
+                            <i class="far fa-eye fa-lg" id="article-watchers-eye-logged-in"></i>
+                        {% endif %}
+
                             {% if watchers_count == 0 %}
-                            <span
-                                class="article-date-info" id="article-watcher-number">No watchers</span>
-                        {% else %}
-                            <span
-                                class="article-date-info" id="article-watcher-number">{{ watchers_count }} {% if watchers_count < 2 %}watcher {% else %}watchers{% endif %}</span>
+                                <span class="article-date-info" id="article-watcher-number">No watchers</span>
+                            {% else %}
+                                <span class="article-date-info" id="article-watcher-number">{{ watchers_count }}
+
                             {% endif %}
-                        </div>
-                        {% else %}
-                        <div class="article-date-info ml-auto"><i class="far fa-eye fa-lg"></i> No watchers - log in to watch</div>
-                    {% endif %}
+
+
+                           {% else %}
+                           <i class="far fa-eye fa-lg" id="article-watchers-eye-logged-out"></i>
+                            {% if watchers_count == 0 %}
+                                <span class="article-date-info" id="article-watcher-number">No watchers</span>
+                            {% else %}
+                                <span class="article-date-info" id="article-watcher-number">{{ watchers_count }}
+
+                            {% endif %}
+
+                        {% endif %}
+                           </div>
+
                     {% endwith %}
 
                     </div>

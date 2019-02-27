@@ -4,35 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
             .toggleClass('far fa-heart fa-lg')
             .toggleClass('fas fa-heart fa-lg');
     });
-    $('#article-watchers-eye-not-watched').click(function () {
+    $('#article-watchers-eye-logged-in').click(function () {
         $(this)
             .toggleClass('far fa-eye fa-lg')
             .toggleClass('fas fa-eye fa-lg');
     });
 });
-
-//Like story
-document.addEventListener('DOMContentLoaded', function () {
-    $('a.like-button').click(function (e) {
-        e.preventDefault();
-        $.post ('{% url "story:like_story" %}',
-            {
-                id: $(this).data('id'),
-                action: $(this).data('action')
-            },
-            function (data) {
-                if (data['status'] == 'ok') {
-                    var previous_action = $('a.like-button').data('action');
-                    $('a.like-button').data('action', previous_action == 'like' ? 'unlike' : 'like');
-                    var previous_likes = parseInt($('span.count .total').text());
-                    $('span.count .total').text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
-                }
-            }
-        );
-    });
-
-});
-
 
 // Character count
 
@@ -81,20 +58,3 @@ var toggle = function () {
 
 };
 document.getElementById('toggle-hide').addEventListener('click', toggle);
-
-
-//CSRF token
-var csrftoken = Cookies.get('csrftoken');
-
-function csrfSafeMethod(method) {
-// these HHTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-
-$.ajaxSetup({
-    beforeSend: function (xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
-    }
-});
