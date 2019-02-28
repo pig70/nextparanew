@@ -1,0 +1,257 @@
+$body-font: 'Playfair Display', serif;
+$secondary-font: 'Oswald', serif;
+
+.article-box {
+  border-radius: 4px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  padding: 70px 0 70px 0;
+}
+
+.content-container {
+  margin: 0 70px 0 70px;
+}
+
+.article-title {
+  font-family: $body-font;
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.09;
+  color: #000000;
+  padding-left: 0;
+}
+
+.article-date-info {
+  font-family: $secondary-font;
+  font-size: 18px;
+  font-weight: 200;
+  color: #000000;
+  padding: 0 !important;
+}
+
+.article-watchers {
+  font-family: $secondary-font;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.watcher-number {
+  margin-left: 3px;
+}
+
+.article-tags {
+  font-family: $secondary-font;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 1.5;
+  margin: 0 0 25px 0;
+}
+
+.article-sub-head {
+  font-family: $secondary-font;
+  font-size: 14px;
+  font-weight: 200;
+  margin-bottom: 5px;
+}
+
+.article-first-para {
+  font-family: $body-font;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000000;
+  margin: 0 20px 22px 0;
+}
+
+.article-paragraph-text {
+  font-family: $body-font;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.5;
+  margin: 0 20px 50px 0;
+}
+
+.article-paragraph-author-image {
+  width: 25px;
+  height: 25px;
+  margin: 0 3px 10px 0;
+  vertical-align: middle;
+  display: inline;
+}
+
+.article-paragraph-author-name {
+  font-family: $secondary-font;
+  font-weight: 200;
+  font-size: 14px;
+  color: #000000;
+  display: inline;
+}
+
+.display-none {
+  display: none;
+  transition: 2s;
+}
+
+.article-like-word {
+  font-family: $secondary-font;
+  font-weight: 200;
+  font-size: 14px;
+  color: #000000;
+  display: inline;
+  margin-left: 5px;
+}
+
+.nextparagraph-like {
+  margin-bottom: 20px;
+}
+
+/* add a paragraph style */
+
+.user-paragraph-field {
+  width: 100%;
+  height: 200px;
+  border-radius: 4px;
+  border: 1px solid #000000;
+  font-family: $body-font;
+  font-weight: 200;
+  font-size: 14px;
+  color: #000000;
+  padding: 10px;
+  margin-bottom: 10px;
+  vertical-align: top;
+}
+
+.input-count {
+  font-family: $secondary-font;
+  font-size: 14px;
+  color: #888888;
+  float: right;
+}
+
+.add-paragraph-container {
+  margin-top: 10px;
+}
+
+.log-in-to-add-prompt-bold {
+  font-family: 'Oswald', serif;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.display-none {
+  display: none;
+}
+
+/* Reading mode toggle */
+
+.reading-mode-toggle {
+  position: fixed;
+  bottom: 0;
+  right: 5rem;
+  height: 55px;
+  width: 200px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  background-color: #ffffff;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding-top: 12px;
+}
+
+.toggle-label {
+  font-family: $secondary-font;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* The switch - the box around the slider */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+  margin-left: 20px;
+  margin-right: 5px;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+/* Hide default HTML checkbox */
+
+/* The slider */
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #bdbdbd;
+  -webkit-transition: .4s;
+  transition: .4s;
+  &:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 2px;
+    background-color: #ffffff;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+}
+
+input {
+  &:checked + .slider {
+    background-color: #000000;
+  }
+  &:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  &:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+}
+
+/* Rounded sliders */
+
+.slider.round {
+  border-radius: 25px;
+  &:before {
+    border-radius: 50%;
+  }
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 400px) {
+  .article-title {
+    font-size: 35px;
+  }
+  .article-box {
+    padding: 30px 0;
+  }
+  .content-container {
+    margin: 0 30px;
+  }
+  .navbar.navbar-expand-lg {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .article-first-para, .article-paragraph-text {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

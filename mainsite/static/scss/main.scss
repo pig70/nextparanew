@@ -1,0 +1,384 @@
+@import "registration";
+@import "article";
+
+$body-font: 'Playfair Display', serif;
+$secondary-font: 'Oswald', serif;
+
+body {
+  font-family: $body-font;
+  font-size: 19px;
+  font-weight: normal;
+  background-color: #f2f2f2;
+}
+
+a {
+  color: #000000;
+  &:hover {
+    color: #000000;
+  }
+}
+
+h1 {
+  font-family: $secondary-font;;
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 25px;
+  padding-left: 15px;
+}
+
+h2 {
+  font-family: $secondary-font;
+  font-size: 30px;
+  font-weight: 900;
+  margin: 25px 0;
+  padding-left: 15px;
+}
+
+h5 {
+  font-family: $secondary-font;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.row {
+  padding: 0;
+  margin: 0;
+}
+
+/* forms and inputs */
+
+input:focus, textarea:focus {
+  outline: 0;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.form-field {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #bfbfbf;
+  font-family: $secondary-font;
+  font-size: 16px;
+  font-weight: 300;
+  color: #000000;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+input {
+  &[type=text], &[type=email] {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #bfbfbf;
+    font-family: $secondary-font;
+    font-size: 16px;
+    font-weight: 300;
+    color: #000000;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  &[type=file] {
+    font-family: $secondary-font;
+    font-size: 14px;
+    color: #000000;
+    display: block;
+  }
+  &[type=password] {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #bfbfbf;
+    font-family: $secondary-font;
+    font-size: 16px;
+    font-weight: 300;
+    color: #000000;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+label {
+  font-family: 'Roboto Slab', serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* footer */
+
+.footer-text {
+  font-family: $body-font;
+  font-size: 14px;
+}
+
+.page-footer {
+  margin-top: 40px;
+}
+
+.author-image {
+  width: 60px;
+  height: 60px;
+  border: 0;
+  margin-right: 15px;
+  float: left;
+  vertical-align: middle;
+}
+
+.login-author-image {
+  width: 35px;
+  height: 35px;
+  border: 0;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+.author-name {
+  font-family: $secondary-font;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  padding: 0;
+  vertical-align: top;
+}
+
+.author {
+  padding: 0;
+  margin-bottom: 17px;
+}
+
+.box-colon-text {
+  font-family: $secondary-font;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+/* homepage */
+
+.homepage-hero-box {
+  box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+  background-color: #323232;
+  margin-top: -40px;
+  padding: 60px 0;
+  position: relative;
+  z-index: 999;
+}
+
+.homepage-hero-bounding-box {
+  min-height: 250px;
+  padding: 0 80px;
+}
+
+.homepage-hero-title {
+  font-family: 'PlayfairDisplay', serif;
+  font-size: 35px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.homepage-hero-text {
+  font-family: 'PlayfairDisplay', serif;
+  font-size: 25px;
+  font-style: italic;
+  color: #ffffff;
+  margin-bottom: 20px;
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+
+.homepage-hero-author-info {
+  display: flex;
+  align-items: center;
+}
+
+.homepage-hero-author-image {
+  width: 70px;
+  height: 70px;
+  border: #ffffff 2px solid;
+  float: left;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+.homepage-hero-author-name {
+  font-family: $secondary-font;
+  font-size: 25px;
+  font-weight: bold;
+  color: #ffffff;
+  vertical-align: middle;
+}
+
+.homepage-mission-statement {
+  font-family: $secondary-font;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+
+.home-paragraph-box {
+  height: 550px;
+  width: 100%;
+  padding: 30px 25px 30px 25px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.home-paragraph-title {
+  font-family: $body-font;
+  font-weight: 900;
+  font-size: 20px;
+  color: #000000;
+}
+
+.home-paragraph-text {
+  font-family: $body-font;
+  font-size: 15px;
+  font-weight: normal;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.home-paragraph-date-added {
+  font-family: $secondary-font;
+  font-size: 13px;
+  font-weight: 200;
+}
+
+.btn.btn-primary.black-button {
+  font-family: $secondary-font;
+  font-size: 12px;
+  color: #ffffff;
+  border-radius: 2px;
+  border: 0;
+  background-color: #000000;
+  padding: 8px 10px;
+  margin: 10px 10px 0 0;
+}
+
+/* nav bar styles */
+
+.login-logout {
+  font-family: $secondary-font;
+  font-weight: 500;
+  font-size: 16px;
+  margin-right: 20px;
+  display: inline;
+}
+
+.minor-nav {
+  font-family: $secondary-font;
+  font-size: 16px;
+  padding-right: 10px;
+  font-weight: 500;
+}
+
+.navbar {
+  background-color: #ffffff;
+  margin-bottom: 40px;
+  color: #000000;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.27);
+  a {
+    color: #000000;
+  }
+}
+
+.navbar-brand {
+  font-family: $body-font;
+  font-size: 22px;
+  font-weight: 900;
+  margin-right: 35px;
+}
+
+.nav-item {
+  font-family: $secondary-font;
+  font-size: 16px;
+  padding-right: 10px;
+  font-weight: 500;
+}
+
+.see-more-link {
+  font-family: $secondary-font;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+/* Story listing styles */
+
+.home-story-box {
+  height: 265px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  padding: 15px 15px;
+  margin-bottom: 15px;
+}
+
+.home-story-title {
+  font-family: $body-font;
+  font-size: 17px;
+  font-weight: 900;
+  color: #000000;
+}
+
+.home-story-author {
+  padding: 0;
+  margin-bottom: 17px;
+}
+
+.home-story-author-image {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  vertical-align: middle;
+  float: left;
+  margin-right: 5px;
+}
+
+.home-story-author-name {
+  vertical-align: top;
+  display: inline-block;
+  font-family: $secondary-font;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000000;
+}
+
+.home-story-date-added {
+  font-family: $secondary-font;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.home-story-stats {
+  font-family: $secondary-font;
+  font-size: 14px;
+  font-weight: 300;
+  color: #000000;
+}
+
+/* Media queries */
+@media only screen and (max-width: 500px) {
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+  .homepage-hero-bounding-box {
+    padding: 0 30px;
+  }
+  .homepage-mission-statement {
+    font-size: 20px;
+  }
+  .homepage-hero-box {
+    padding: 30px 0;
+  }
+}

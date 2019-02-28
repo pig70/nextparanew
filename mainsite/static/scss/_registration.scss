@@ -1,0 +1,22 @@
+$body-font: 'Playfair Display', serif;
+$secondary-font: 'Oswald', serif;
+
+.registration-container {
+  max-width: 500px;
+  margin: auto;
+}
+
+.registration-box {
+  width: 100%;
+  padding: 25px;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+}
+
+.reg-pages-text {
+  font-family: $body-font;
+  font-size: 22px;
+  padding-left: 15px;
+  text-align: center;
+}
