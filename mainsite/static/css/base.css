@@ -1,8 +1,5 @@
-@import "article.css";
-@import "registration.css";
-
 body {
-    font-family: $body-font;
+    font-family: 'Playfair Display', serif;
     font-size: 14px;
     font-weight: normal;
     background-color: #f2f2f2;
@@ -17,7 +14,7 @@ a:hover {
 }
 
 h1 {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 30px;
     font-weight: 900;
     margin-bottom: 25px;
@@ -89,7 +86,7 @@ input[type=email] {
 }
 
 input[type=file] {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 14px;
     color: #000000;
     display: block;
@@ -117,7 +114,7 @@ label {
 
 /* footer */
 .footer-text {
-    font-family: $body-font;
+    font-family: 'Playfair Display', serif;
     font-size: 14px;
 }
 
@@ -143,7 +140,7 @@ label {
 }
 
 .author-name {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 18px;
     font-weight: bold;
     color: #000000;
@@ -157,7 +154,7 @@ label {
 }
 
 .box-colon-text {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #000000;
@@ -217,7 +214,7 @@ label {
 }
 
 .homepage-hero-author-name {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 25px;
     font-weight: bold;
     color: #ffffff;
@@ -225,7 +222,7 @@ label {
 }
 
 .homepage-mission-statement {
-  font-family: $secondary-font;
+  font-family: 'Oswald', sans-serif;
   font-size: 30px;
   font-weight: bold;
   text-align: center;
@@ -247,14 +244,14 @@ label {
 }
 
 .home-paragraph-title {
-    font-family: $body-font;
+    font-family: 'Playfair Display', serif;
     font-weight: 900;
     font-size: 20px;
     color: #000000;
 }
 
 .home-paragraph-text {
-    font-family: $body-font;
+    font-family: 'Playfair Display', serif;
     font-size: 15px;
     font-weight: normal;
     color: #000000;
@@ -262,13 +259,13 @@ label {
 }
 
 .home-paragraph-date-added {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 13px;
     font-weight: 200;
 }
 
 .btn.btn-primary.black-button {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 12px;
     color: #ffffff;
     border-radius: 2px;
@@ -280,7 +277,7 @@ label {
 
 /* nav bar styles */
 .login-logout {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-weight: 500;
     font-size: 16px;
     margin-right: 20px;
@@ -288,7 +285,7 @@ label {
 }
 
 .minor-nav {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 16px;
     padding-right: 10px;
     font-weight: 500;
@@ -306,14 +303,14 @@ label {
 }
 
 .navbar-brand {
-    font-family: $body-font;
+    font-family: 'Playfair Display', serif;
     font-size: 22px;
     font-weight: 900;
     margin-right: 35px;
 }
 
 .nav-item {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 16px;
     padding-right: 10px;
     font-weight: 500;
@@ -336,7 +333,7 @@ label {
 }
 
 .home-story-title {
-    font-family: $body-font;
+    font-family: 'Playfair Display', serif;
     font-size: 17px;
     font-weight: 900;
     color: #000000;
@@ -360,20 +357,20 @@ label {
 .home-story-author-name {
     vertical-align: top;
     display: inline-block;
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-weight: bold;
     font-size: 15px;
     color: #000000;
 }
 
 .home-story-date-added {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 12px;
     font-weight: 200;
 }
 
 .home-story-stats {
-    font-family: $secondary-font;
+    font-family: 'Oswald', sans-serif;
     font-size: 14px;
     font-weight: 300;
     color: #000000;
