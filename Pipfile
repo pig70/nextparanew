@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 Django = "~=2.2.10"
 Pillow = "*"
+django-taggit = "*"
 
 [requires]
 python_version = "3.7"
